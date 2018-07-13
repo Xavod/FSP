@@ -1,2 +1,2 @@
 # FSP
-Food Shuffle
+Food Shuffle Project
