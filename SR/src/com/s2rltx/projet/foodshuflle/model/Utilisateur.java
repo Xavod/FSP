@@ -39,7 +39,9 @@ public class Utilisateur {
 		this.idNDPfav = idNDPfav;
 	}
 	
-	
+	public Utilisateur () {
+		
+	}
 	
 
 }
