@@ -1,17 +1,10 @@
-/**
- * 
- */
-package com.sr2ltx.algotojava.projetFoodShuffle;
+package com.s2rltx.projet.foodshuffle;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-
 import com.mysql.cj.jdbc.MysqlDataSource;
 
-/**
- * @author Apprenant
- *
- */
+
 public class DbOpenHelper {
 	
 	private Connection connection = createConnection();

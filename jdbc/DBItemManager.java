@@ -1,17 +1,11 @@
-/**
- * 
- */
-package com.sr2ltx.algotojava.projetFoodShuffle;
+package com.s2rltx.projet.foodshuffle;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author Apprenant
- *
- */
+
 public class DBItemManager <T extends DBBaseItem>{
 
 	private static final String INSERT = "INSERT INTO %s(%s) VALUES(%s)";

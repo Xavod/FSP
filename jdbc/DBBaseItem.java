@@ -1,14 +1,8 @@
-/**
- * 
- */
-package com.sr2ltx.algotojava.projetFoodShuffle;
+package com.s2rltx.projet.foodshuffle;
 
 import java.sql.ResultSet;
 
-/**
- * @author Apprenant
- *
- */
+
 public abstract class DBBaseItem {
 	
 	public String TABLE;
