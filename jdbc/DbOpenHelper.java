@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.sr2ltx.algotojava.projetFoodShuffle;
+package com.s2rltx.projet.foodshuflle;
 
 import java.sql.Connection;
 import java.sql.SQLException;

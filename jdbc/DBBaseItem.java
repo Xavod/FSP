@@ -1,9 +1,9 @@
 /**
  * 
  */
-package com.sr2ltx.algotojava.projetFoodShuffle;
+package com.s2rltx.projet.foodshuflle;
 
-import java.sql.ResultSet;
+
 
 /**
  * @author Apprenant
@@ -15,8 +15,7 @@ public abstract class DBBaseItem {
 	public String ID;
 	
 	private int id;
-	private Object item;
-	
+		
 
 	public int getId() {
 		return id;
@@ -34,26 +33,16 @@ public abstract class DBBaseItem {
 		return ID;
 	}
 	
-	public Object getItem() {
-		return item;
-	}
-
-	public void setItem(Object item) {
-		this.item = item;
-	}
-
 	public DBBaseItem(String table, String id){
 		this.TABLE = table;
 		this.ID = id;
 	}
 	
-	public abstract DBBaseItem parseIn(ResultSet rs);
-	
+		
 	public abstract String getSchema();
 	
-	public abstract String parseOut(Object item);
-	
-	public abstract String getContraintes();
-
+		
 	public abstract String getFields();
+	
+	 
 }
