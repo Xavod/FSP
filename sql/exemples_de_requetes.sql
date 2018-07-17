@@ -210,4 +210,35 @@ group by nom;
 |   6 | betteraves cuites        | g        |     250.00 |
 */	
 	
-	
+select 
+	ingredient.id, 
+	ingredient.I_nom as nom, 
+	sum(recette.R_ingr_qtt) as qtt,
+	ingredient.I_unite as unit 
+from 
+	recette, ingredient 
+where 
+	recette.I_id = ingredient.id 
+	and nom not like "%tomate%"
+group by nom;
+
+-- somme des temps
+select Recettes, Ingredients, Qtt, Unites, Pers, (Prepa + Cuisson) as Tps from v_globale where R_id = 1; 
+/*
++---------------------+----------------------+---------+---------+------+------+
+| Recettes            | Ingredients          | Qtt     | Unites  | Pers | Tps  |
++---------------------+----------------------+---------+---------+------+------+
+| agneau a l'anglaise | Worcestershire sauce |    6.00 | cs      |    4 |   85 |
+| agneau a l'anglaise | thym                 |    2.00 | brins   |    4 |   85 |
+| agneau a l'anglaise | champignons de Paris |  200.00 | g       |    4 |   85 |
+| agneau a l'anglaise | farine               |   20.00 | g       |    4 |   85 |
+| agneau a l'anglaise | huile d'olive        |    3.00 | cs      |    4 |   85 |
+| agneau a l'anglaise | oignons              |    3.00 | NULL    |    4 |   85 |
+| agneau a l'anglaise | pomme de terre       | 1000.00 | g       |    4 |   85 |
+| agneau a l'anglaise | sauce teriyaki       |    1.00 | cs      |    4 |   85 |
+| agneau a l'anglaise | collier d'agneau     |    4.00 | tranche |    4 |   85 |
++---------------------+----------------------+---------+---------+------+------+
+*/
+
+-- liste des courses
+select Ingredients, sum(Qtt) as total from v_globale where P_id = 36 or P_id = 37 group by Ingredients;
