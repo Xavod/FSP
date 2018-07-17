@@ -114,27 +114,27 @@ sans gluten
 */	
 
 -- Creer une vue globale des ingredients et des noms de plat
-create view if not exists v_globale as
+drop view if exists  v_globale;
+CREATE VIEW `v_globale` AS 
 select 
-	NomDePlat.id as R_id, 
-	NomDePlat.nom_du_plat as Recettes,
-	NomDePlat.regime as Regimes_speciaux,
-	Ingredient.id as I_id,
-	Ingredient.I_nom as Ingredients,
-	Ingredient.I_unite as Unites,
-	Ingredient.I_groupe as Groupes,
-	Ingredient.I_kcal as kcal
-from 
-	NomDePlat, 
-	Ingredient 
+    `nomdeplat`.`id` AS `R_id`,
+    `nomdeplat`.`nom_du_plat` AS `Recettes`,
+    `nomdeplat`.`regime` AS `Regimes`,
+    `ingredient`.`id` AS `I_id`,
+    `ingredient`.`I_nom` AS `Ingredients`,
+    `recette`.`R_ingr_qtt` AS `Qtt`,
+    `ingredient`.`I_unite` AS `Unites`,
+    `ingredient`.`I_groupe` AS `Groupes`,
+    `recette`.`R_nbr_pers` AS `Pers`,
+    `recette`.`R_tps_prepa` AS `Prepa`,
+    `recette`.`R_tps_cuisson` AS `Cuisson`,
+    `ingredient`.`I_kcal` AS `kcal` 
+from `nomdeplat`, `ingredient`, `recette` 
 where 
-	Ingredient.id in (
-		select Recette.I_id 
-		from Recette 
-		where Recette.P_id = NomDePlat.id
-	);
-	
-select * from  v_globale limit 5;
+    `ingredient`.`id` = `recette`.`I_id` and
+    `nomdeplat`.`id` = `recette`.`P_id`;
+
+select * from  v_globale limit 20;
 	
 
 -- Retourne les plats non vegetariens et sans poisson ni fruits de mer via la vue cette fois:
@@ -186,6 +186,28 @@ group by R_id;
 +------------------------------------------+
 */
 
-	
+
+-- sortir les ingredients: nom, qtt et unite
+select 
+	ingredient.id, 
+	ingredient.I_nom as nom, 
+	recette.R_ingr_qtt,
+	ingredient.I_unite as unit 
+from 
+	recette, ingredient 
+where 
+	recette.I_id = ingredient.id 
+group by nom;
+
+/*
++-----+--------------------------+----------+------------+
+| id  | nom                      | unit     | R_ingr_qtt |
++-----+--------------------------+----------+------------+
+|   1 | aubergine                | NULL     |       1.00 |
+|   2 | aubergines               | NULL     |       1.00 |
+|   3 | avocats                  | NULL     |       2.00 |
+|   4 | basilic                  | cs       |       2.00 |
+|   6 | betteraves cuites        | g        |     250.00 |
+*/	
 	
 	
