@@ -5,7 +5,7 @@ package com.s2rltx.projet.foodshuflle.model;
 
 import java.sql.ResultSet;
 
-import com.s2rltx.projet.foodshuflle.manager.DBBaseItem;
+import com.s2rltx.projet.foodshuflle.managerdatabase.DBBaseItem;
 
 /**
  * @author Stéphanie

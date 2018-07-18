@@ -3,7 +3,7 @@
  */
 package com.s2rltx.projet.foodshuflle.model;
 
-import com.s2rltx.projet.foodshuflle.manager.DBBaseItem;
+import com.s2rltx.projet.foodshuflle.managerdatabase.DBBaseItem;
 
 /**
  * @author Stéphanie
