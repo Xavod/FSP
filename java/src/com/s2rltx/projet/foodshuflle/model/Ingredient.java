@@ -62,8 +62,10 @@ public class Ingredient extends DBBaseItem{
 	private static final String TABLE = "Ingredient";
 	private static final String ID = "id";
 	private static final String[][] FIELDS = { 
-			{ "nom", "VARCHAR(255)" }, 
-			{ "unite", "VARCHAR(5)" }, {"groupe", "VARCHAR(100)"},{"kcal", "INT(11)"} 
+			{ "I_nom", "VARCHAR(250)" }, 
+			{ "I_unite", "VARCHAR(25)" }, 
+			{ "I_groupe", "VARCHAR(100)" },
+			{ "I_kcal", "INT(11)" } 
 			};
 	
 	public Ingredient() {
@@ -72,13 +74,14 @@ public class Ingredient extends DBBaseItem{
 	
 	@Override
 	public String getSchema() {
-		return "CREATE TABLE " + TABLE + " ("  
-				+ ID + " INT AUTO_INCREMENT PRIMARY KEY NOT NULL," 
-				+ FIELDS[0][0] + " " + FIELDS[0][1] + ","
-				+ FIELDS[1][0] + " " + FIELDS[1][1] + ","
-				+ FIELDS[2][0] + " " + FIELDS[2][1] + ","
-				+ FIELDS[3][0] + " " + FIELDS[3][1] + ""
-				+ ")";
+		String msg = "CREATE TABLE " + TABLE + " (\n\t"
+                + ID + " INT AUTO_INCREMENT PRIMARY KEY NOT NULL," + "\n\t";
+        for (int i = 0; i < (FIELDS.length - 1); i++) {
+            msg += FIELDS[i][0] + " " + FIELDS[i][1] + ",\n\t";
+        }
+
+        msg += FIELDS[FIELDS.length - 1][0] + " " + FIELDS[FIELDS.length - 1][1] + "\n)";
+        return msg;
 	}
 
 	@Override

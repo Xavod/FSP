@@ -46,7 +46,8 @@ public class NomDePlat {
 	private static final String TABLE = "NomDePlat";
 	private static final String ID = "id";
 	private static final String[][] FIELDS = { 
-			{ "nom", "VARCHAR(255)"}, {"regime", "VARCHAR(255)"} 
+			{ "nom_du_plat", "VARCHAR(255)" }, 
+			{ "regime", "VARCHAR(255)" } 
 			};
 	
 	public NomDePlat() {
@@ -55,11 +56,14 @@ public class NomDePlat {
 	
 	@Override
 	public String getSchema() {
-		return "CREATE TABLE " + TABLE + " ("  
-				+ ID + " INT AUTO_INCREMENT PRIMARY KEY NOT NULL," 
-				+ FIELDS[0][0] + " " + FIELDS[0][1] + ","
-				+ FIELDS[1][0] + " " + FIELDS[1][1] + ""
-				+ ")";
+		String msg = "CREATE TABLE " + TABLE + " (\n\t"
+                + ID + " INT AUTO_INCREMENT PRIMARY KEY NOT NULL," + "\n\t";
+        for (int i = 0; i < (FIELDS.length - 1); i++) {
+            msg += FIELDS[i][0] + " " + FIELDS[i][1] + ",\n\t";
+        }
+
+        msg += FIELDS[FIELDS.length - 1][0] + " " + FIELDS[FIELDS.length - 1][1] + "\n)";
+        return msg;
 	}
 	
 
