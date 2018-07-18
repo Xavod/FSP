@@ -3,46 +3,17 @@
  */
 package com.s2rltx.projet.foodshuflle.model;
 
+import java.sql.ResultSet;
+
+import com.s2rltx.projet.foodshuflle.managerdatabase.DBBaseItem;
+
 /**
  * @author Stéphanie
  *
  */
-public class NomDePlat {
+public class NomDePlat extends DBBaseItem{
 
-	/*int idNDP;
-	String nomDePlat;
-	String regime;
-	
-	public int getIdNDP() {
-		return idNDP;
-	}
-	public void setIdNDP(int idNDP) {
-		this.idNDP = idNDP;
-	}
-	public String getNomDePlat() {
-		return nomDePlat;
-	}
-	public void setNomDePlat(String nomDePlat) {
-		this.nomDePlat = nomDePlat;
-	}
-	
-	public String getRegime() {
-		return regime;
-	}
-	public void setRegime(String regime) {
-		this.regime = regime;
-	}
-	
-	public NomDePlat(int idNDP, String nomDePlat, String regime) {
-		super();
-		this.idNDP = idNDP;
-		this.nomDePlat = nomDePlat;
-		this.regime = regime;
-	}
-	*/
-	public NomDePlat() {
-		
-	}
+
 	private static final String TABLE = "NomDePlat";
 	private static final String ID = "id";
 	private static final String[][] FIELDS = { 
@@ -78,5 +49,18 @@ public class NomDePlat {
 		return result;
 	}
 
+	public DBBaseItem parseIn(ResultSet rs) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String parseOut(Object item) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+
+	
 	
 }

@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 package com.s2rltx.projet.foodshuffle;
+=======
+/**
+ * 
+ */
+package com.s2rltx.projet.foodshuflle;
+>>>>>>> f21f73ab52bc14117ec530bdcd6f7d88edcdd86d
 
 import java.sql.Connection;
 import java.sql.SQLException;

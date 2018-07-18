@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 package com.s2rltx.projet.foodshuffle;
+=======
+package com.s2rltx.projet.foodshuflle;
+>>>>>>> f21f73ab52bc14117ec530bdcd6f7d88edcdd86d
 
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -101,7 +105,86 @@ public class DbManager {
 		}
 
 		return result;
-}
+	}
+	
+	public void selectReq(String request) {
+		Statement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			stmt = DbOpenHelper.getInstance().getConnection().createStatement();
+			rs = stmt.executeQuery(request);
+			//On récupère les MetaData
+
+		      ResultSetMetaData resultMeta = rs.getMetaData();
+		      int count = 0;
+		     
+		      do {   
+
+		      System.out.print("******************");
+		      
+		      count++;
+		      
+		      } while(count<=resultMeta.getColumnCount());
+		      System.out.print("\n");
+
+		      //On affiche le nom des colonnes
+
+		      for(int i = 1; i <= resultMeta.getColumnCount(); i++)
+
+		        System.out.print(String.format(" %-20s | ", resultMeta.getColumnName(i).toUpperCase()));
+
+		        System.out.print("\n");
+		        count = 0;
+		      do {   
+
+			      System.out.print("******************");
+			      
+			      count++;
+			      
+			      } while(count<=resultMeta.getColumnCount());
+			      System.out.print("\n");
+
+		         
+
+		      while(rs.next()){         
+
+		    	  for (int i = 1; i <= resultMeta.getColumnCount(); ++ i) {
+		    		  Object o = rs.getObject(i);
+		    		  String value =  (o == null ? "NULL" : o.toString());
+				  	  System.out.print(String.format(" %-20s | ", value));
+		    	  }
+		            
+		    	  System.out.print("\n");
+			        count = 0;
+			      do {   
+
+				      System.out.print("------------------");
+				      
+				      count++;
+				      
+				      } while(count<=resultMeta.getColumnCount());
+				      System.out.print("\n");
+
+
+		      }
+
+
+		      rs.close();
+
+		      stmt.close();
+
+		         
+
+		    } catch (Exception e) {
+
+		      e.printStackTrace();
+
+		    }      
+
+		  }
+
+		}
 	
 	
 	
@@ -109,4 +192,5 @@ public class DbManager {
 	
 	
 	
-}
+	
+
