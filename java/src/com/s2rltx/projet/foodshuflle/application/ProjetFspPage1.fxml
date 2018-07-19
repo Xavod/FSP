@@ -4,58 +4,24 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ScrollBar?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.StackPane?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity"
 	minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
 	prefWidth="800.0" style="-fx-background-color: #FFE6C9;"
 	xmlns="http://javafx.com/javafx/10.0.1"
 	xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="com.s2rltx.projet.foodshuflle.application.controller.ControllerProjetFspPage1>
-	<left>
-		<Pane prefHeight="440.0" prefWidth="201.0"
-			BorderPane.alignment="CENTER">
-			<BorderPane.margin>
-				<Insets left="7.0" />
-			</BorderPane.margin>
-			<children>
-				<TextField layoutX="26.0" layoutY="51.0" fx:id="login" />
-				<PasswordField layoutX="26.0" layoutY="114.0"
-					fx:id="password" />
-				<Text layoutX="26.0" layoutY="47.0" strokeType="OUTSIDE"
-					strokeWidth="0.0" text="LOGIN :" />
-				<Text layoutX="26.0" layoutY="110.0" strokeType="OUTSIDE"
-					strokeWidth="0.0" text="PASSWORD :" />
-				<Text layoutX="27.0" layoutY="204.0" strokeType="OUTSIDE"
-					strokeWidth="0.0" text="S'INSCRIRE :" />
-				<ImageView fitHeight="27.0" fitWidth="24.0"
-					layoutX="108.0" layoutY="187.0" pickOnBounds="true"
-					preserveRatio="true" fx:id="register">
-					<image>
-						<Image
-							url="@../../../../Documents/STEPHANIE/FormationJAVAJ2E/Projet/Preparation%20soutenance%20finale/register.png" />
-					</image>
-				</ImageView>
-				<Text layoutX="59.0" layoutY="253.0" strokeType="OUTSIDE"
-					strokeWidth="0.0" text="VOS FAVORIS">
-					<font>
-						<Font name="System Bold" size="12.0" />
-					</font>
-				</Text>
-				<Button layoutX="132.0" layoutY="149.0"
-					mnemonicParsing="false" text="GO !" fx:id="go" />
-			</children>
-		</Pane>
-	</left>
+	fx:controller="com.s2rltx.projet.foodshuflle.application.controller.ControllerProjetFspPage1">
+
 	<top>
 		<BorderPane prefHeight="200.0" prefWidth="200.0"
 			BorderPane.alignment="CENTER">
@@ -107,6 +73,44 @@
 			</center>
 		</BorderPane>
 	</top>
+
+
+	<left>
+		<Pane prefHeight="440.0" prefWidth="201.0"
+			BorderPane.alignment="CENTER">
+			<BorderPane.margin>
+				<Insets left="7.0" />
+			</BorderPane.margin>
+			<children>
+				<TextField fx:id="login" layoutX="26.0" layoutY="51.0" />
+				<PasswordField fx:id="password" layoutX="26.0"
+					layoutY="114.0" />
+				<Text layoutX="26.0" layoutY="47.0" strokeType="OUTSIDE"
+					strokeWidth="0.0" text="LOGIN :" />
+				<Text layoutX="26.0" layoutY="110.0" strokeType="OUTSIDE"
+					strokeWidth="0.0" text="PASSWORD :" />
+				<Text layoutX="27.0" layoutY="204.0" strokeType="OUTSIDE"
+					strokeWidth="0.0" text="S'INSCRIRE :" />
+				<ImageView fx:id="register" fitHeight="27.0"
+					fitWidth="24.0" layoutX="108.0" layoutY="187.0" pickOnBounds="true"
+					preserveRatio="true">
+					<image>
+						<Image
+							url="@../../../../Documents/STEPHANIE/FormationJAVAJ2E/Projet/Preparation%20soutenance%20finale/register.png" />
+					</image>
+				</ImageView>
+				<Text layoutX="59.0" layoutY="253.0" strokeType="OUTSIDE"
+					strokeWidth="0.0" text="VOS FAVORIS">
+					<font>
+						<Font name="System Bold" size="12.0" />
+					</font>
+				</Text>
+				<Button fx:id="go" layoutX="132.0" layoutY="149.0"
+					mnemonicParsing="false" text="GO !" />
+			</children>
+		</Pane>
+	</left>
+
 	<center>
 		<VBox prefHeight="200.0" prefWidth="100.0"
 			BorderPane.alignment="CENTER">
@@ -119,9 +123,9 @@
 								<Insets left="10.0" top="10.0" />
 							</VBox.margin>
 						</Text>
-						<TextField maxHeight="-Infinity" maxWidth="-Infinity"
-							minWidth="-Infinity" prefHeight="20.0" prefWidth="30.0"
-							fx:id="nbPers">
+						<TextField fx:id="nbPers" maxHeight="-Infinity"
+							maxWidth="-Infinity" minWidth="-Infinity" prefHeight="20.0"
+							prefWidth="30.0">
 							<VBox.margin>
 								<Insets left="160.0" top="-20.0" />
 							</VBox.margin>
@@ -132,9 +136,9 @@
 								<Insets left="300.0" top="-20.0" />
 							</VBox.margin>
 						</Text>
-						<TextField layoutX="170.0" layoutY="17.0"
-							maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity"
-							prefHeight="20.0" prefWidth="30.0" fx:id="nbRepas">
+						<TextField fx:id="nbRepas" layoutX="170.0"
+							layoutY="17.0" maxHeight="-Infinity" maxWidth="-Infinity"
+							minWidth="-Infinity" prefHeight="20.0" prefWidth="30.0">
 							<VBox.margin>
 								<Insets left="420.0" top="-20.0" />
 							</VBox.margin>
@@ -145,29 +149,20 @@
 								<Insets left="10.0" top="15.0" />
 							</VBox.margin>
 						</Text>
-
-
-						<ScrollPane fx:id="scroll">
-							<StackPane fx:id="regimesAllergies">
-							</StackPane>
-						</ScrollPane>
-
-
-
-						<CheckBox layoutX="160.0" layoutY="59.0"
-							mnemonicParsing="false" text="&lt;30 min" fx:id="less30min">
+						<CheckBox fx:id="less30min" layoutX="160.0"
+							layoutY="59.0" mnemonicParsing="false" text="&lt;30 min">
 							<VBox.margin>
 								<Insets left="160.0" top="-18.0" />
 							</VBox.margin>
 						</CheckBox>
-						<CheckBox layoutX="235.0" layoutY="59.0"
-							mnemonicParsing="false" text="30 min à 1h" fx:id="entre3060min">
+						<CheckBox fx:id="entre3060min" layoutX="235.0"
+							layoutY="59.0" mnemonicParsing="false" text="30 min à 1h">
 							<VBox.margin>
 								<Insets left="240.0" top="-17.0" />
 							</VBox.margin>
 						</CheckBox>
-						<CheckBox layoutX="170.0" layoutY="98.0"
-							mnemonicParsing="false" text="&gt;1h" fx:id="plus1h">
+						<CheckBox fx:id="plus1h" layoutX="170.0" layoutY="98.0"
+							mnemonicParsing="false" text="&gt;1h">
 							<VBox.margin>
 								<Insets left="335.0" top="-17.0" />
 							</VBox.margin>
@@ -178,15 +173,15 @@
 								<Insets left="300.0" top="25.0" />
 							</VBox.margin>
 						</Text>
-						<TextField maxHeight="-Infinity" maxWidth="-Infinity"
-							minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0"
-							prefWidth="200.0" fx:id="exclusion">
+						<TextField fx:id="exclusion" maxHeight="-Infinity"
+							maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+							prefHeight="25.0" prefWidth="200.0">
 							<VBox.margin>
 								<Insets left="300.0" top="10.0" />
 							</VBox.margin>
 						</TextField>
-						<Button mnemonicParsing="false" text="Ajouter"
-							fx:id="ajouter">
+						<Button fx:id="ajouter" mnemonicParsing="false"
+							text="Ajouter">
 							<VBox.margin>
 								<Insets left="500.0" top="-25.0" />
 							</VBox.margin>
@@ -197,32 +192,21 @@
 								<Insets left="10.0" top="-50.0" />
 							</VBox.margin>
 						</Text>
-						<CheckBox mnemonicParsing="false" text="Végétarien"
-							fx:id="vegetarien">
+						<StackPane fx:id="regimesAllergies">
 							<VBox.margin>
 								<Insets left="10.0" top="10.0" />
 							</VBox.margin>
-						</CheckBox>
-						<CheckBox mnemonicParsing="false" text="Sans Gluten"
-							fx:id="gluten">
-							<VBox.margin>
-								<Insets left="10.0" top="10.0" />
-							</VBox.margin>
-						</CheckBox>
-						<CheckBox layoutX="20.0" layoutY="127.0"
-							mnemonicParsing="false" text="Produits Laitiers" fx:id="lait">
-							<VBox.margin>
-								<Insets left="10.0" top="10.0" />
-							</VBox.margin>
-						</CheckBox>
-						<CheckBox layoutX="20.0" layoutY="154.0"
-							mnemonicParsing="false" text="Arachide" fx:id="arachide">
-							<VBox.margin>
-								<Insets left="10.0" top="10.0" />
-							</VBox.margin>
-						</CheckBox>
-						<ImageView fitHeight="27.0" fitWidth="24.0"
-							pickOnBounds="true" preserveRatio="true" fx:id="generer">
+							<children>
+								<ScrollBar orientation="VERTICAL"
+									StackPane.alignment="CENTER_LEFT">
+									<StackPane.margin>
+										<Insets />
+									</StackPane.margin>
+								</ScrollBar>
+							</children>
+						</StackPane>
+						<ImageView fx:id="generer" fitHeight="27.0"
+							fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
 							<image>
 								<Image
 									url="@../../../../Documents/STEPHANIE/FormationJAVAJ2E/Projet/Preparation%20soutenance%20finale/couvert.png" />
@@ -240,30 +224,23 @@
 								<Font name="System Bold" size="18.0" />
 							</font>
 						</Text>
-						<CheckBox layoutX="20.0" layoutY="127.0"
-							mnemonicParsing="false" text="Soja" fx:id="soja">
-							<VBox.margin>
-								<Insets left="10.0" top="-15.0" />
-							</VBox.margin>
-						</CheckBox>
-						<CheckBox layoutX="20.0" layoutY="154.0"
-							mnemonicParsing="false" text="Fruits à coques" fx:id="coque">
-							<VBox.margin>
-								<Insets left="10.0" top="10.0" />
-							</VBox.margin>
-						</CheckBox>
-						<CheckBox layoutX="20.0" layoutY="181.0"
-							mnemonicParsing="false" text="Moutarde" fx:id="moutarde">
-							<VBox.margin>
-								<Insets left="10.0" top="10.0" />
-							</VBox.margin>
-						</CheckBox>
-						<CheckBox layoutX="20.0" layoutY="208.0"
-							mnemonicParsing="false" text="Oeuf" fx:id="oeuf">
-							<VBox.margin>
-								<Insets left="10.0" top="10.0" />
-							</VBox.margin>
-						</CheckBox>
+						<!-- <CheckBox mnemonicParsing="false" text="Végétarien" fx:id="vegetarien"> 
+							<VBox.margin> <Insets left="10.0" top="10.0" /> </VBox.margin> </CheckBox> 
+							<CheckBox mnemonicParsing="false" text="Sans Gluten" fx:id="gluten"> <VBox.margin> 
+							<Insets left="10.0" top="10.0" /> </VBox.margin> </CheckBox> <CheckBox layoutX="20.0" 
+							layoutY="127.0" mnemonicParsing="false" text="Produits Laitiers" fx:id="lait"> 
+							<VBox.margin> <Insets left="10.0" top="10.0" /> </VBox.margin> </CheckBox> 
+							<CheckBox layoutX="20.0" layoutY="154.0" mnemonicParsing="false" text="Arachide" 
+							fx:id="arachide"> <VBox.margin> <Insets left="10.0" top="10.0" /> </VBox.margin> 
+							</CheckBox> <CheckBox layoutX="20.0" layoutY="127.0" mnemonicParsing="false" 
+							text="Soja" fx:id="soja"> <VBox.margin> <Insets left="10.0" top="-15.0" /> 
+							</VBox.margin> </CheckBox> <CheckBox layoutX="20.0" layoutY="154.0" mnemonicParsing="false" 
+							text="Fruits à coques" fx:id="coque"> <VBox.margin> <Insets left="10.0" top="10.0" 
+							/> </VBox.margin> </CheckBox> <CheckBox layoutX="20.0" layoutY="181.0" mnemonicParsing="false" 
+							text="Moutarde" fx:id="moutarde"> <VBox.margin> <Insets left="10.0" top="10.0" 
+							/> </VBox.margin> </CheckBox> <CheckBox layoutX="20.0" layoutY="208.0" mnemonicParsing="false" 
+							text="Oeuf" fx:id="oeuf"> <VBox.margin> <Insets left="10.0" top="10.0" /> 
+							</VBox.margin> </CheckBox> -->
 					</children>
 				</VBox>
 			</children>

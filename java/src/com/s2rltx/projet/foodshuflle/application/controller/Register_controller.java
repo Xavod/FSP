@@ -3,6 +3,8 @@
  */
 package com.s2rltx.projet.foodshuflle.application.controller;
 
+
+import com.s2rltx.projet.foodshuflle.managerdatabase.DbManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -32,8 +34,10 @@ public class Register_controller {
 	
 	@FXML
 	public void userCreated() {
+		DbManager manager = new DbManager();
+		
 		if(userCreatedError()==false) {
-			
+			manager.creationRequest("INSERT INTO Utilisateur (U_pseudo, U_mdp, U_email) VALUES ('" + login.getText() + "','" + password.getText() + "','" + email.getText() + "')");
 		}
 	}
 	
