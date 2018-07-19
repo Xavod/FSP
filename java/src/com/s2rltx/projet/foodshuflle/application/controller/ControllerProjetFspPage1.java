@@ -36,6 +36,9 @@ public class ControllerProjetFspPage1 implements Initializable{
 	private CheckBox plus1h;
 	@FXML
 	private TextField exclusion;
+	@FXML
+	private Button ajouter;
+	
 	/*@FXML 
 	private CheckBox vegetarien;
 	@FXML 
@@ -58,15 +61,13 @@ public class ControllerProjetFspPage1 implements Initializable{
 	private ImageView generer;
 	@FXML
 	private StackPane regimesAllergies;
-	@FXML
-	private ScrollPane scroll;
+	
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
-for (int i = 0; i < 10; i++) {
-	this.regimesAllergies.getChildren().add(new CheckBox("coucou"));
-}
+		for (int i = 0; i < 10; i++) {
+			this.regimesAllergies.getChildren().add(new CheckBox("coucou"));
+		}
 		
 		
 		
