@@ -6,7 +6,7 @@ package com.s2rltx.projet.foodshuflle.model;
 import com.s2rltx.projet.foodshuflle.managerdatabase.DBBaseItem;
 
 /**
- * @author Stéphanie
+ * @author Stephanie
  *
  */
 public abstract class Recette extends DBBaseItem {
@@ -30,7 +30,8 @@ public abstract class Recette extends DBBaseItem {
 	@Override
 	public String getSchema() {
 		String msg = "CREATE TABLE " + TABLE + " (\n\t"
-                + ID + " INT AUTO_INCREMENT PRIMARY KEY NOT NULL," + "\n\t";
+				+ ID + " INT AUTO_INCREMENT PRIMARY KEY NOT NULL," + "\n\t";
+				
         for (int i = 0; i < (FIELDS.length - 1); i++) {
             msg += FIELDS[i][0] + " " + FIELDS[i][1] + ",\n\t";
         }
@@ -38,18 +39,13 @@ public abstract class Recette extends DBBaseItem {
         msg += FIELDS[FIELDS.length - 1][0] + " " + FIELDS[FIELDS.length - 1][1] + "\n)";
         return msg;
 	}
-<<<<<<< HEAD
 	
 	@Override
 	public getContraints() {
 		System.out.println("FOREIGN KEY (P_id) REFERENCES nomDePlat(id)");
-		System.out.println("FOREIGN KEY (I_id) REFERENCES ingredient(id)"}; 			
+		System.out.println("FOREIGN KEY (I_id) REFERENCES ingredient(id)"); 			
 	}
 		
-=======
-			
-
->>>>>>> f21f73ab52bc14117ec530bdcd6f7d88edcdd86d
 	@Override
 	public String getFields() {
 		String result = "";
