@@ -212,7 +212,7 @@
                         </CheckBox>
 							</children>
 						</StackPane>
-						<ImageView fx:id="generer" onMouseClicked="#generate" onMouseEntered="#apparenceCursor" fitHeight="27.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+						<ImageView fx:id="generer" onMouseClicked="#generate" fitHeight="27.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
 							<image>
 								<Image url="@../../../../../../images/couvert.png" />
 							</image>
