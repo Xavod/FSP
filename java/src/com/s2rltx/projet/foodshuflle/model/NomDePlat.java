@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import com.s2rltx.projet.foodshuflle.managerdatabase.DBBaseItem;
 
 /**
- * @author Stéphanie
+ * @author Stephanie
  *
  */
 public class NomDePlat extends DBBaseItem{

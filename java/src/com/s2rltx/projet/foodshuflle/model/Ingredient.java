@@ -6,7 +6,7 @@ package com.s2rltx.projet.foodshuflle.model;
 import com.s2rltx.projet.foodshuflle.managerdatabase.DBBaseItem;
 
 /**
- * @author Stéphanie
+ * @author Stephanie
  *
  */
 public abstract class Ingredient extends DBBaseItem{

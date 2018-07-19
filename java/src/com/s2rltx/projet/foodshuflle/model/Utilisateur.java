@@ -6,7 +6,7 @@ package com.s2rltx.projet.foodshuflle.model;
 import java.util.List;
 
 /**
- * @author Stéphanie
+ * @author Stephanie
  *
  */
 public class Utilisateur {

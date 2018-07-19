@@ -48,7 +48,7 @@ public class Register_controller {
 		
 		if (!password.getText().equals(confirmPassword.getText())) {
 			result = true;
-			alert.setContentText("Ooops, la confirmation du password est erronée");
+			alert.setContentText("Ooops, la confirmation du password est erronÃ©e");
 			alert.showAndWait();
 		}
 		
