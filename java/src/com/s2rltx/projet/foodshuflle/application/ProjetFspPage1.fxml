@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ScrollBar?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -165,54 +166,62 @@
                               <Insets left="10.0" top="40.0" />
                            </StackPane.margin>
                         </CheckBox>
-                        <CheckBox fx:id="mer" mnemonicParsing="false"  text="Fruits de Mer" StackPane.alignment="TOP_LEFT">
+                        <CheckBox fx:id="mer" mnemonicParsing="false" text="Fruits de Mer" StackPane.alignment="TOP_LEFT">
                            <StackPane.margin>
                               <Insets left="10.0" top="60.0" />
                            </StackPane.margin>
                         </CheckBox>
-                        <CheckBox fx:id="coque" mnemonicParsing="false"  text="Fruits à Coques" StackPane.alignment="TOP_LEFT">
+                        <CheckBox fx:id="coque" mnemonicParsing="false" text="Fruits à Coques" StackPane.alignment="TOP_LEFT">
                            <StackPane.margin>
                               <Insets left="10.0" top="80.0" />
                            </StackPane.margin>
                         </CheckBox>
-                        <CheckBox fx:id="vegetarien" layoutX="99.0" layoutY="52.0" mnemonicParsing="false"  text="Végétarien" StackPane.alignment="TOP_LEFT">
+                        <CheckBox fx:id="vegetarien" layoutX="99.0" layoutY="52.0" mnemonicParsing="false" text="Végétarien" StackPane.alignment="TOP_LEFT">
                            <StackPane.margin>
                               <Insets left="10.0" />
                            </StackPane.margin>
                         </CheckBox>
-                        <CheckBox fx:id="moutarde" layoutX="30.0" layoutY="30.0" mnemonicParsing="false"  text="Moutarde" StackPane.alignment="TOP_RIGHT">
+                        <CheckBox fx:id="moutarde" layoutX="30.0" layoutY="30.0" mnemonicParsing="false" text="Moutarde" StackPane.alignment="TOP_RIGHT">
                            <StackPane.margin>
                               <Insets right="20.0" />
                            </StackPane.margin>
                         </CheckBox>
-                        <CheckBox fx:id="gluten" layoutX="30.0" layoutY="50.0" mnemonicParsing="false"  text="Gluten" StackPane.alignment="TOP_RIGHT">
+                        <CheckBox fx:id="gluten" layoutX="30.0" layoutY="50.0" mnemonicParsing="false" text="Gluten" StackPane.alignment="TOP_RIGHT">
                            <StackPane.margin>
                               <Insets right="37.0" top="80.0" />
                            </StackPane.margin>
                         </CheckBox>
-                        <CheckBox fx:id="oeuf" layoutX="30.0" layoutY="70.0" mnemonicParsing="false"  text="Oeuf" StackPane.alignment="TOP_RIGHT">
+                        <CheckBox fx:id="oeuf" layoutX="30.0" layoutY="70.0" mnemonicParsing="false" text="Oeuf" StackPane.alignment="TOP_RIGHT">
                            <StackPane.margin>
                               <Insets right="47.0" top="20.0" />
                            </StackPane.margin>
                         </CheckBox>
-                        <CheckBox fx:id="sesame" layoutX="30.0" layoutY="90.0" mnemonicParsing="false"  text="Sesame" StackPane.alignment="TOP_RIGHT">
+                        <CheckBox fx:id="sesame" layoutX="30.0" layoutY="90.0" mnemonicParsing="false" text="Sesame" StackPane.alignment="TOP_RIGHT">
                            <StackPane.margin>
                               <Insets right="32.0" top="40.0" />
                            </StackPane.margin>
                         </CheckBox>
-                        <CheckBox fx:id="soja" layoutX="30.0" layoutY="10.0" mnemonicParsing="false"  text="Soja" StackPane.alignment="TOP_RIGHT">
+                        <CheckBox fx:id="soja" layoutX="30.0" layoutY="10.0" mnemonicParsing="false" text="Soja" StackPane.alignment="TOP_RIGHT">
                            <StackPane.margin>
                               <Insets right="50.0" top="60.0" />
                            </StackPane.margin>
                         </CheckBox>
-                        <CheckBox fx:id="poisson" mnemonicParsing="false"  text="Poisson" StackPane.alignment="TOP_LEFT">
+                        <CheckBox fx:id="poisson" mnemonicParsing="false" text="Poisson" StackPane.alignment="TOP_LEFT">
                            <StackPane.margin>
                               <Insets left="10.0" top="100.0" />
                            </StackPane.margin>
                         </CheckBox>
 							</children>
 						</StackPane>
-						<ImageView fx:id="generer" onMouseClicked="#generate" fitHeight="27.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                  <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="133.0" prefWidth="277.0" VBox.vgrow="NEVER">
+                     <VBox.margin>
+                        <Insets left="300.0" top="-100.0" />
+                     </VBox.margin>
+                     <children>
+                        <ScrollBar orientation="VERTICAL" />
+                     </children>
+                  </VBox>
+						<ImageView fx:id="generer" fitHeight="27.0" fitWidth="24.0" onMouseClicked="#generate" pickOnBounds="true" preserveRatio="true">
 							<image>
 								<Image url="@../../../../../../images/couvert.png" />
 							</image>
