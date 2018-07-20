@@ -17,6 +17,7 @@ public class Select_controller {
     @FXML
     private Button submit;
     private Button cancel;
+    private Button select;
 
     @FXML
     public void handleCancel() {
@@ -28,6 +29,11 @@ public class Select_controller {
         // capture contenu champs et envoie qqpart
     }
 
+    @FXML
+    public void handleSelect() {
+        // SELECT;
+        // step 1. ouvrir nouvelle fenetre
+    }
 
     public void initialize(URL arg0, ResourceBundle arg1) {
         // TODO Auto-generated method stub

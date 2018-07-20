@@ -45,7 +45,7 @@ public class Page2_controller {
 		try {
 			Stage stage = (Stage) this.register.getScene().getWindow();
 			
-			Parent root = FXMLLoader.load(getClass().getResource("../application/ProjetFspRegister.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("../ProjetFspRegister.fxml"));
 			
 			Scene scene = this.register.getScene(); 
 			scene = new Scene(root,800,600);

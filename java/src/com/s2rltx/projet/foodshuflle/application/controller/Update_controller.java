@@ -12,7 +12,7 @@ import javafx.scene.control.Button;
  * @author Reno
  *
  */
-public class Select_controller {
+public class Update_controller {
 
     @FXML
     private Button submit;

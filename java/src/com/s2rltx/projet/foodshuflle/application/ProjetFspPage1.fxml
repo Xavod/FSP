@@ -20,7 +20,7 @@
 	prefWidth="800.0" style="-fx-background-color: #FFE6C9;"
 	xmlns="http://javafx.com/javafx/10.0.1"
 	xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="com.s2rltx.projet.foodshuflle.application.controller.ControllerProjetFspPage1>
+	fx:controller="com.s2rltx.projet.foodshuflle.application.controller.ControllerProjetFspPage1">
 	<left>
 		<Pane prefHeight="440.0" prefWidth="201.0"
 			BorderPane.alignment="CENTER">
@@ -41,8 +41,7 @@
 					layoutX="108.0" layoutY="187.0" pickOnBounds="true"
 					preserveRatio="true" fx:id="register">
 					<image>
-						<Image
-							url="@../../../../Documents/STEPHANIE/FormationJAVAJ2E/Projet/Preparation%20soutenance%20finale/register.png" />
+						<Image url="@../img/register.png" />
 					</image>
 				</ImageView>
 				<Text layoutX="59.0" layoutY="253.0" strokeType="OUTSIDE"
@@ -65,7 +64,7 @@
 					BorderPane.alignment="CENTER">
 					<image>
 						<Image
-							url="@../../../../Documents/STEPHANIE/FormationJAVAJ2E/Projet/Preparation%20soutenance%20finale/LogoFoodShuffle.jpg" />
+							url="@../img/LogoFoodShuffle.jpg" />
 					</image>
 					<BorderPane.margin>
 						<Insets left="10.0" />
@@ -225,7 +224,7 @@
 							pickOnBounds="true" preserveRatio="true" fx:id="generer">
 							<image>
 								<Image
-									url="@../../../../Documents/STEPHANIE/FormationJAVAJ2E/Projet/Preparation%20soutenance%20finale/couvert.png" />
+									url="@../img/couvert.png" />
 							</image>
 							<VBox.margin>
 								<Insets left="450.0" />

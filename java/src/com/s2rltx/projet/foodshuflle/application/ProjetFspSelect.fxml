@@ -30,8 +30,9 @@
  
     <TextField fx:id="extra" promptText="order by, group by, etc." GridPane.columnIndex="1" GridPane.rowIndex="4" />
     
-   <Button fx:id="submit" mnemonicParsing="false" onMouseClicked="#userCreated" text="Soumettre" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
-   
+     <Button fx:id="submit" onMouseClicked="#handleSubmit" text="Soumettre" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.halignment="RIGHT"/>
+    <Button fx:id="back" onMouseClicked="#handleBack" text="Retour" GridPane.columnIndex="0" GridPane.rowIndex="5" GridPane.halignment="LEFT"/>
+  
    <columnConstraints>
       <ColumnConstraints />
       <ColumnConstraints />

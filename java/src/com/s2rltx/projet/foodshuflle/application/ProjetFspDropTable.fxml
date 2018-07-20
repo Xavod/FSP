@@ -14,17 +14,11 @@
         <Insets bottom="10" left="25" right="25" top="25" />
     </padding>
 
-    <Text text="Executer une requete UPDATE :" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.rowIndex="0" />
+    <Text text="Supprimer une table :" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.rowIndex="0" />
  
-    <Label text="UPDATE" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+    <Label text="DROP TABLE" GridPane.columnIndex="0" GridPane.rowIndex="1" />
     <TextField fx:id="table" promptText="table" GridPane.columnIndex="1" GridPane.rowIndex="1" />
  
-    <Label text="SET" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-    <TextField fx:id="set" promptText="ex. col1 = 1, col2 = 2" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-
-    <Label text="WHERE" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-    <TextField fx:id="where" promptText="condition(s)" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-
     <Button fx:id="submit" onMouseClicked="#handleSubmit" text="Soumettre" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.halignment="RIGHT"/>
     <Button fx:id="back" onMouseClicked="#handleBack" text="Retour" GridPane.columnIndex="0" GridPane.rowIndex="5" GridPane.halignment="LEFT"/>
     <columnConstraints>
