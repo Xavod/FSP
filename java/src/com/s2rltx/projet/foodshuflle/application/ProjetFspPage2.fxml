@@ -75,14 +75,17 @@
 						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 					</rowConstraints>
 					<children>
-						<ImageView fitHeight="103.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" />
-						<ImageView fitHeight="103.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
-						<ImageView fitHeight="103.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-						<ImageView fitHeight="103.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
-						<ImageView fitHeight="103.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
-						<ImageView fitHeight="103.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" />
-						<ImageView fitHeight="103.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-						<ImageView fitHeight="103.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+						<ImageView fx:id="image1" fitHeight="103.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../image/register.png" />
+                     </image></ImageView>
+						<ImageView fx:id="image5" fitHeight="103.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
+						<ImageView fx:id="image6" fitHeight="103.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+						<ImageView fx:id="image2" fitHeight="103.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
+						<ImageView fx:id="image3" fitHeight="103.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
+						<ImageView fx:id="image4" fitHeight="103.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" />
+						<ImageView fx:id="image7" fitHeight="103.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+						<ImageView fx:id="image8" fitHeight="103.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1" />
 					</children>
 					<VBox.margin>
 						<Insets top="60.0" />
