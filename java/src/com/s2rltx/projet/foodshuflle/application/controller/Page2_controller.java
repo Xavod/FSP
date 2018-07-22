@@ -14,6 +14,7 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
@@ -66,38 +67,37 @@ public class Page2_controller implements Initializable {
 
 	@FXML
 	private Pane paneUser;
-	
+
 	@FXML
 	private ImageView image1;
-	
+
 	@FXML
 	private ImageView image2;
-	
+
 	@FXML
 	private ImageView image3;
-	
+
 	@FXML
 	private ImageView image4;
-	
+
 	@FXML
 	private ImageView image5;
-	
+
 	@FXML
 	private ImageView image6;
-	
+
 	@FXML
 	private ImageView image7;
-	
+
 	@FXML
 	private ImageView image8;
-	
+
 	DbManager manager = new DbManager();
-	
 	
 
 	public Page2_controller() {
 		super();
-//		this.showImage();
+		// this.showImage();
 	}
 
 	@Override
@@ -131,14 +131,14 @@ public class Page2_controller implements Initializable {
 		Alert alert = new Alert(AlertType.ERROR);
 		alert.setTitle("Error Dialog");
 		alert.setHeaderText(null);
-		ResultSet rs = manager.selectRequest("SELECT U_pseudo,U_mdp FROM utilisateur WHERE U_pseudo = '" + login.getText() + "' and U_mdp = '" + password.getText() +"'");
-		if (testLoginError()==false) {
+		ResultSet rs = manager.selectRequest("SELECT U_pseudo,U_mdp FROM utilisateur WHERE U_pseudo = '"
+				+ login.getText() + "' and U_mdp = '" + password.getText() + "'");
+		if (testLoginError() == false) {
 			try {
-				if (rs.next()==false) {
+				if (rs.next() == false) {
 					alert.setContentText("Ooops, erreur de login ou de password");
 					alert.showAndWait();
-				}
-				else {
+				} else {
 					this.paneLogin.setManaged(false);
 					this.paneUser.setManaged(true);
 					this.paneLogin.setOpacity(0.0);
@@ -148,71 +148,121 @@ public class Page2_controller implements Initializable {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}	
+		}
 	}
-	
+
 	public boolean testLoginError() {
-		boolean result=false;
+		boolean result = false;
 		Alert alert = new Alert(AlertType.ERROR);
 		alert.setTitle("Error Dialog");
 		alert.setHeaderText(null);
-		
+
 		if ((login.getText().equals("")) || (password.getText().equals(""))) {
-			result=true;
+			result = true;
 			alert.setContentText("Ooops, veuillez remplir tous les champs");
 			alert.showAndWait();
 		}
-		
+
 		return result;
 	}
-	
+
 	public void showImage() {
+		int index0 = 0,index1 = 0,index2 = 0,index3 = 0,index4 = 0,index5 = 0,index6 = 0,index7 = 0;
 		
-		List<Integer> ids = DataShare.instance().getSelectedRecetteIds();
+		List<Integer>ids = DataShare.instance().getSelectedRecetteIds();
 		int nbBoucle = DataShare.instance().getRepas();
+		//System.out.println(ids);
+		//System.out.println(nbBoucle);
 		if (ids == null) {
 			System.err.println("The id list should not be null");
 			System.exit(-1);
 		}
-		
-		//System.out.println(ids.size());
-
 		Random rand = new Random();
-		//for (int i=0;i<nbBoucle;i++) {
-			//int nombre = rand.nextInt(ids.size());
-			int nombre = 1;
-			Integer imgNb = ids.get(nombre);
-			//String filename = String.format("image/%d.jpg", imgNb);
-			String filename = "image/1.jpg";
-			File img = new File(filename);
-			String uri = img.toURI().toString();
-//			Image image = new Image("file:" + filename);
-			Image image = null;
-			
-			try {
-				image = new Image(new FileInputStream(img), 200d, 200d, true, true);
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			}
-			
-//			Image image = null;
-			
-//			try (Reader br = new FileReader(new File(filename))) {
-//				image = new Image(br);
-//			} catch (FileNotFoundException e) {
-//				e.printStackTrace();
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
-			
-			if (this.image1 == null) {
-				System.out.println("Pas de chance");
-			} else {				
-				if (image != null) this.image1.setImage(image);
-			}
-			
-		//}
-	}
 		
-	
+		if(nbBoucle>ids.size()) {nbBoucle = ids.size();}
+					
+			for (int i = 0; i < nbBoucle; i++) {
+				
+				int nombre = rand.nextInt(ids.size());
+				//System.out.println(ids.size());
+				//System.out.println(ids);
+				
+				Integer imgNb = ids.get(nombre);
+				
+				String filename = String.format("image/" + imgNb + ".jpg");
+				File img = new File(filename);
+
+				Image image = null;
+
+				try {
+					image = new Image(new FileInputStream(img), 100d, 100d, true, true);
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				}
+					
+				switch (i) {
+
+				case 0:
+					this.image1.setImage(image);
+					ids.remove(nombre);
+					index0 = imgNb;
+					break;
+
+				case 1:
+					this.image2.setImage(image);
+					ids.remove(nombre);
+					index1 = imgNb;
+					break;
+					
+				case 2:
+					this.image3.setImage(image);
+					ids.remove(nombre);
+					index2 = imgNb;
+					break;
+					
+				case 3:
+					this.image4.setImage(image);
+					ids.remove(nombre);
+					index3 = imgNb;
+					break;
+					
+				case 4:
+					this.image5.setImage(image);
+					ids.remove(nombre);
+					index4 = imgNb;
+					break;
+					
+				case 5:
+					this.image6.setImage(image);
+					ids.remove(nombre);
+					index5 = imgNb;
+					break;
+					
+				case 6:
+					this.image7.setImage(image);
+					ids.remove(nombre);
+					index6 = imgNb;
+					break;
+					
+				case 7:
+					this.image8.setImage(image);
+					ids.remove(nombre);
+					index7 = imgNb;
+					break;
+				
+					
+				}
+				
+			}System.out.println("index0: " + index0 +  "\n" + "index1: " + index1 + "\n" + "index2: " + index2
+					+ "\n" + "index3: " + index3 + "\n" + "index4: " + index4 + "\n" + "index5: " + index5
+					+ "\n" + "index6: " + index6 + "\n" + "index7: " + index7);
+
+		}
+		
+
+	public void listeCourse() {
+		manager.selectReq("SELECT Ingredients, sum(Qtt) as total from temp_B where R_id = 36 or R_id = 37 group by Ingredients");
+		
+		
+	}
 }

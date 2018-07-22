@@ -17,6 +17,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
@@ -233,28 +235,111 @@ public class Page1_controller {
 			
 		}
 	}
-	goPage2();
 	
-//	new Thread(new Runnable() {
-//		
-//		@Override
-//		public void run() {
-//			try {
-//				Thread.sleep(1000);
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//			
-//			Page1_controller.this.controller.showImage();
+//		boolean flag = false;
+//		boolean flag2 = false;
+//		String result;
+//		String result2;
+//		List<String> list_regime = new ArrayList<>();
+//		List<String> list_tps = new ArrayList<>();
+//
+//		if (this.vegetarien.isSelected()) {
+//			flag = true;
+//			list_regime.add("regimes LIKE '%v%'");
 //		}
-//	}).start();
-	}
+//		if (this.gluten.isSelected()) {
+//			flag = true;
+//			list_regime.add("regimes NOT LIKE '%g%'");
+//		}
+//		if (this.poisson.isSelected()) {
+//			flag = true;
+//			list_regime.add("regimes NOT LIKE '%p%'");
+//		}
+//		if (this.coque.isSelected()) {
+//			flag = true;
+//			list_regime.add("regimes NOT LIKE '%f%'");
+//		}
+//		if (this.mer.isSelected()) {
+//			flag = true;
+//			list_regime.add("regimes NOT LIKE '%c%'");
+//		}
+//		if (this.moutarde.isSelected()) {
+//			flag = true;
+//			list_regime.add("regimes NOT LIKE '%m%'");
+//		}
+//		if (this.arachide.isSelected()) {
+//			flag = true;
+//			list_regime.add("regimes NOT LIKE '%a%'");
+//		}
+//		if (this.lait.isSelected()) {
+//			flag = true;
+//			list_regime.add("regimes NOT LIKE '%l%'");
+//		}
+//		if (this.soja.isSelected()) {
+//			flag = true;
+//			list_regime.add("regimes NOT LIKE '%s%'");
+//		}
+//		if (this.oeuf.isSelected()) {
+//			flag = true;
+//			list_regime.add("regimes NOT LIKE '%o%'");
+//		}
+//		if (this.sesame.isSelected()) {
+//			flag = true;
+//			list_regime.add("regimes NOT LIKE '%se%'");
+//		}
+//		if (this.less30min.isSelected()) {
+//			flag2 = true;
+//			list_tps.add("(Prepa + Cuisson) < 30");
+//		}
+//
+//		if (this.entre3060min.isSelected()) {
+//			flag2 = true;
+//			list_tps.add("(Prepa + Cuisson) between 30 and 60");
+//		}
+//
+//		if (this.plus1h.isSelected()) {
+//			flag2 = true;
+//			list_tps.add("(Prepa + Cuisson) > 60");
+//		}
+//
+//		// r affiche tout
+//		String r = "select P_id, Recettes from v_globale";
+//		if (!flag) {
+//			result = "";
+//		} else {
+//			result = String.join(" AND ", list_regime);
+//			r = String.format("%s where %s", r, result);
+//		}
+//		if (!flag2) {
+//			result2 = "";
+//		} else {
+//			result2 = String.join(" OR ", list_tps);
+//			r = String.format("%s and %s", r, result2);
+//		}
+//		r = String.format("%s group by P_id", r);
+//		System.out.println(r);
+//		manager.selectReq(r);
+		
+		goPage2();
+}
+
+		
+	
+	
 	
 	@FXML
 	public void goPage2() {
 		if(flagGenerate == true) {
 			tabGenerate = manager.selectRequestStrings("SELECT R_id FROM temp_B GROUP BY R_id");
+			
+			if(tabGenerate.size()<Integer.parseInt(nbRepas.getText())) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Information Dialog");
+				alert.setHeaderText(null);
+	
+				alert.setContentText("Au vu des restrictions, le nombre de recettes possibles est inférieur au nombre demandé");
+				alert.showAndWait();
+			}
 			
 			DataShare.instance().setSelectedRecetteIds(tabGenerate);
 			DataShare.instance().setRepas(nbRepas.getText());

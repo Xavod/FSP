@@ -75,10 +75,7 @@
 						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 					</rowConstraints>
 					<children>
-						<ImageView fx:id="image1" fitHeight="103.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../image/register.png" />
-                     </image></ImageView>
+						<ImageView fx:id="image1" fitHeight="103.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" />
 						<ImageView fx:id="image5" fitHeight="103.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
 						<ImageView fx:id="image6" fitHeight="103.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 						<ImageView fx:id="image2" fitHeight="103.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
@@ -92,7 +89,7 @@
 					</VBox.margin>
 				</GridPane>
 
-      				<HBox alignment="CENTER">
+      				<HBox alignment="CENTER" visible="false">
 					<Text strokeType="OUTSIDE" strokeWidth="0.0" text="Générer  à nouveau">
 						<font>
 							<Font name="System Bold" size="22.0" />
@@ -105,6 +102,9 @@
 							<Image url="@../../../../../../image/couvert.png" />
 						</image>
 					</ImageView>
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
 				</HBox>
 				
       				<HBox alignment="CENTER">
@@ -115,7 +115,7 @@
 					</Text>
 					<Rectangle width="40.0">
 					</Rectangle>
-					<ImageView fx:id="list" fitHeight="44.0" fitWidth="121.0" layoutX="64.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+					<ImageView fx:id="list" onMouseClicked="#listeCourse" fitHeight="44.0" fitWidth="121.0" layoutX="64.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
 						<image>
 							<Image url="@../../../../../../image/shopping%20list.png" />
 						</image>
