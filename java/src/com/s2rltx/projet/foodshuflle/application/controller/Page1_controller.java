@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import com.s2rltx.projet.foodshuflle.application.model.DataShare;
 import com.s2rltx.projet.foodshuflle.managerdatabase.DbManager;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -90,6 +91,9 @@ public class Page1_controller implements Initializable {
 	private VBox vBoxExclusion;
 	private String resultEx = "";
 	DbManager manager = new DbManager();
+	private List<String> tabGenerate;
+	private boolean flagGenerate;
+	Page2_controller controller;
 
 	// Gestion des logins et inscriptions
 	@Override
@@ -177,6 +181,14 @@ public class Page1_controller implements Initializable {
 	}
 
 	// Generation des repas
+	
+	public List<String> getTabGenerate() {
+		return tabGenerate;
+	}
+
+	public void setTabGenerate(List<String> tabGenerate) {
+		this.tabGenerate = tabGenerate;
+}
 	public String addExclus() {
 		this.vBoxExclusion.getChildren().add(new Text(exclusion.getText()));
 		resultEx += "ingredients NOT LIKE \"%" + exclusion.getText() + "%\" and ";
@@ -186,132 +198,244 @@ public class Page1_controller implements Initializable {
 
 	@FXML
 	public void generate() {
-
-		/*
-		 * manager.creationRequest("DROP TABLE IF EXISTS temp_A"); manager.
-		 * creationRequest("CREATE TABLE temp_A (id int auto_increment primary key not null,"
-		 * +
-		 * " R_id int(11), Recettes varchar(250), Regimes varchar(250), I_id int (11), Ingredients varchar(250),"
-		 * +
-		 * " Qtt decimal(10,2), Unites varchar(25), Groupes varchar(100), Pers int(11), Prepa int(11), Cuisson int(11), kcal int(11))"
-		 * ); manager.creationRequest(
-		 * "INSERT INTO temp_A (R_id, Recettes, Regimes, I_id, Ingredients, Qtt, Unites, Groupes, Pers, Prepa, Cuisson, kcal)"
-		 * +
-		 * " SELECT R_id, Recettes, Regimes, I_id, Ingredients, Qtt, Unites, Groupes, Pers, Prepa, Cuisson, kcal FROM v_globale"
-		 * );
-		 * 
-		 * // variable pour le temps de preparation String M30 = ""; String M60 = "";
-		 * String P60 = ""; //variable pour les checkbox regimes et allergies String V =
-		 * ""; String G = ""; String L = ""; String S = ""; String Se = ""; String M =
-		 * ""; String O = ""; String A = ""; String F = ""; String P = ""; String C =
-		 * "";
-		 * 
-		 * String result = "";
-		 * 
-		 * if (this.less30min.isSelected()) { M30 = "temps < 30  and "; }
-		 * 
-		 * if (this.entre3060min.isSelected()) { M60 = "temps between 30 and 60 and "; }
-		 * 
-		 * if (this.plus1h.isSelected()) { P60 = "temps > 60 and "; } if
-		 * (this.vegetarien.isSelected()) { //
-		 * manager.selectReq("SELECT* FROM v_A WHERE regimes LIKE \"%V%\"" ); V =
-		 * "regimes LIKE \"%V%\" and "; } if (this.gluten.isSelected()) { G =
-		 * "regimes NOT LIKE \"%G%\" and "; } if (this.poisson.isSelected()) { P =
-		 * "regimes NOT LIKE \"%P%\" and "; } if (this.coque.isSelected()) { F =
-		 * "regimes NOT LIKE \"%F%\" and "; } if (this.mer.isSelected()) { C =
-		 * "regimes NOT LIKE \"%C%\" and "; } if (this.moutarde.isSelected()) { M =
-		 * "regimes NOT LIKE \"%M%\" and "; } if (this.arachide.isSelected()) { A =
-		 * "regimes NOT LIKE \"%A%\" and "; } if (this.lait.isSelected()) { L =
-		 * "regimes NOT LIKE \"%L%\" and "; } if (this.soja.isSelected()) { S =
-		 * "regimes NOT LIKE \"%S%\" and "; } if (this.oeuf.isSelected()) { O =
-		 * "regimes NOT LIKE \"%O%\" and "; } if (this.sesame.isSelected()) { Se =
-		 * "regimes NOT LIKE \"%Se%\" and "; } result = "SELECT* FROM v_A WHERE " + V +
-		 * S + O + Se + P + C + L + G + A + M + F + M30 + M60 + P60 + "\""; result =
-		 * result.substring(0, (result.length() - 6)); System.out.println(result);
-		 * manager.selectReq(result);
-		 */
+		flagGenerate = true;
+		
+        manager.creationRequest("DROP TABLE IF EXISTS temp_A");
+        manager.creationRequest("CREATE TABLE temp_A (id int auto_increment primary key not null,"
+        + " R_id int(11), Recettes varchar(250), Regimes varchar(250), I_id int(11), Ingredients varchar(250),"
+        + " Qtt decimal(10,2), Unites varchar(25), Groupes varchar(100), Pers int(11), Prepa int(11), Cuisson int(11), kcal int(11))");
+        manager.creationRequest("INSERT INTO temp_A (R_id, Recettes, Regimes, I_id, Ingredients, Qtt, Unites, Groupes, Pers, Prepa, Cuisson, kcal)"
+                + " SELECT R_id, Recettes, Regimes, I_id, Ingredients, Qtt, Unites, Groupes, Pers, Prepa, Cuisson, kcal FROM v_globale");
+        
+		String V="";
+		String G= "";
+		String L= "";
+		String S ="";
+		String Se = "";
+		String M ="";
+		String O = "";
+		String A ="";
+		String F ="";
+		String P ="";
+		String C ="";
+		
+		String result = "";
 		boolean flag = false;
-		boolean flag2 = false;
-		String result;
-		String result2;
-		List<String> list_regime = new ArrayList<>();
-		List<String> list_tps = new ArrayList<>();
-
+		
 		if (this.vegetarien.isSelected()) {
+			//manager.selectReq("SELECT* FROM v_A WHERE regimes LIKE \"%V%\"" );
+			V = "regimes LIKE \"%V%\" and ";
 			flag = true;
-			list_regime.add("regimes LIKE '%v%'");
 		}
 		if (this.gluten.isSelected()) {
+			G ="regimes NOT LIKE \"%G%\" and ";
 			flag = true;
-			list_regime.add("regimes NOT LIKE '%g%'");
 		}
 		if (this.poisson.isSelected()) {
+			P = "regimes NOT LIKE \"%P%\" and ";
 			flag = true;
-			list_regime.add("regimes NOT LIKE '%p%'");
 		}
 		if (this.coque.isSelected()) {
+			F = "regimes NOT LIKE \"%F%\" and ";
 			flag = true;
-			list_regime.add("regimes NOT LIKE '%f%'");
 		}
 		if (this.mer.isSelected()) {
+			C = "regimes NOT LIKE \"%C%\" and ";
 			flag = true;
-			list_regime.add("regimes NOT LIKE '%c%'");
 		}
-		if (this.moutarde.isSelected()) {
+		if (this.moutarde.isSelected()){
+			M = "regimes NOT LIKE \"%M%\" and ";
 			flag = true;
-			list_regime.add("regimes NOT LIKE '%m%'");
 		}
 		if (this.arachide.isSelected()) {
+			A = "regimes NOT LIKE \"%A%\" and ";
 			flag = true;
-			list_regime.add("regimes NOT LIKE '%a%'");
 		}
 		if (this.lait.isSelected()) {
+			L = "regimes NOT LIKE \"%L%\" and ";
 			flag = true;
-			list_regime.add("regimes NOT LIKE '%l%'");
 		}
 		if (this.soja.isSelected()) {
+			S = "regimes NOT LIKE \"%S%\" and ";
 			flag = true;
-			list_regime.add("regimes NOT LIKE '%s%'");
 		}
 		if (this.oeuf.isSelected()) {
+			O = "regimes NOT LIKE \"%O%\" and ";
 			flag = true;
-			list_regime.add("regimes NOT LIKE '%o%'");
 		}
-		if (this.sesame.isSelected()) {
+		if(this.sesame.isSelected()) {
+			Se = "regimes NOT LIKE \"%Se%\" and ";
 			flag = true;
-			list_regime.add("regimes NOT LIKE '%se%'");
 		}
-		if (this.less30min.isSelected()) {
-			flag2 = true;
-			list_tps.add("(Prepa + Cuisson) < 30");
-		}
-
-		if (this.entre3060min.isSelected()) {
-			flag2 = true;
-			list_tps.add("(Prepa + Cuisson) between 30 and 60");
-		}
-
-		if (this.plus1h.isSelected()) {
-			flag2 = true;
-			list_tps.add("(Prepa + Cuisson) > 60");
-		}
-
-		// r affiche tout
-		String r = "select P_id, Recettes from v_globale";
-		if (!flag) {
-			result = "";
-		} else {
-			result = String.join(" AND ", list_regime);
-			r = String.format("%s where %s", r, result);
-		}
-		if (!flag2) {
-			result2 = "";
-		} else {
-			result2 = String.join(" OR ", list_tps);
-			r = String.format("%s and %s", r, result2);
-		}
-		r = String.format("%s group by P_id", r);
-		System.out.println(r);
-		manager.selectReq(r);
+	result = "WHERE " + V + S + O + Se + P + C + L + G + A + M + F + "\"";
+	
+	if(flag = true) {
+		result = result.substring(0,(result.length()-6));
+		manager.creationRequest("DROP TABLE IF EXISTS temp_B");
+		manager.creationRequest("CREATE TABLE temp_B (id int auto_increment primary key not null,"
+		        + " R_id int(11), Recettes varchar(250), Regimes varchar(250), I_id int(11), Ingredients varchar(250),"
+		        + " Qtt decimal(10,2), Unites varchar(25), Groupes varchar(100), Pers int(11), Prepa int(11), Cuisson int(11), kcal int(11))");
+		manager.creationRequest("INSERT INTO temp_B (R_id, Recettes, Regimes, I_id, Ingredients, Qtt, Unites, Groupes, Pers, Prepa, Cuisson, kcal)"
+		        + " SELECT R_id, Recettes, Regimes, I_id, Ingredients, Qtt, Unites, Groupes, Pers, Prepa, Cuisson, kcal FROM temp_A " + result);
+		
+		
+		if(resultEx.length()>0) {
+			resultEx = resultEx.substring(0,(resultEx.length()-5));
+			result = "SELECT R_id FROM temp_A WHERE " + resultEx;
+			manager.creationRequest("DELETE FROM temp_B WHERE R_id in (" + result + ")");
+			manager.selectReq("SELECT id, R_id, recettes FROM temp_B group by R_id");
+		}else {manager.selectReq("SELECT id, R_id, recettes FROM temp_B group by R_id");}
 	}
+	else {
+		manager.selectReq("SELECT id, R_id, recettes FROM temp_A group by R_id");
+	}
+	if(flag = false) {
+		if(resultEx.length()>0) {
+			resultEx = resultEx.substring(0,(resultEx.length()-5));
+			manager.creationRequest("DROP TABLE IF EXISTS temp_B");
+			manager.creationRequest("CREATE TABLE temp_B (id int auto_increment primary key not null,"
+			        + " R_id int(11), Recettes varchar(250), Regimes varchar(250), I_id int(11), Ingredients varchar(250),"
+			        + " Qtt decimal(10,2), Unites varchar(25), Groupes varchar(100), Pers int(11), Prepa int(11), Cuisson int(11), kcal int(11))");
+			manager.creationRequest("INSERT INTO temp_B (R_id, Recettes, Regimes, I_id, Ingredients, Qtt, Unites, Groupes, Pers, Prepa, Cuisson, kcal)"
+			        + " SELECT R_id, Recettes, Regimes, I_id, Ingredients, Qtt, Unites, Groupes, Pers, Prepa, Cuisson, kcal FROM temp_A ");
+			result = "SELECT R_id FROM temp_A WHERE " + resultEx;
+			manager.creationRequest("DELETE FROM temp_B WHERE R_id in (" + result + ")");
+			manager.selectReq("SELECT id, R_id, recettes FROM temp_B group by R_id");
+			
+		}
+	}
+	
+//		boolean flag = false;
+//		boolean flag2 = false;
+//		String result;
+//		String result2;
+//		List<String> list_regime = new ArrayList<>();
+//		List<String> list_tps = new ArrayList<>();
+//
+//		if (this.vegetarien.isSelected()) {
+//			flag = true;
+//			list_regime.add("regimes LIKE '%v%'");
+//		}
+//		if (this.gluten.isSelected()) {
+//			flag = true;
+//			list_regime.add("regimes NOT LIKE '%g%'");
+//		}
+//		if (this.poisson.isSelected()) {
+//			flag = true;
+//			list_regime.add("regimes NOT LIKE '%p%'");
+//		}
+//		if (this.coque.isSelected()) {
+//			flag = true;
+//			list_regime.add("regimes NOT LIKE '%f%'");
+//		}
+//		if (this.mer.isSelected()) {
+//			flag = true;
+//			list_regime.add("regimes NOT LIKE '%c%'");
+//		}
+//		if (this.moutarde.isSelected()) {
+//			flag = true;
+//			list_regime.add("regimes NOT LIKE '%m%'");
+//		}
+//		if (this.arachide.isSelected()) {
+//			flag = true;
+//			list_regime.add("regimes NOT LIKE '%a%'");
+//		}
+//		if (this.lait.isSelected()) {
+//			flag = true;
+//			list_regime.add("regimes NOT LIKE '%l%'");
+//		}
+//		if (this.soja.isSelected()) {
+//			flag = true;
+//			list_regime.add("regimes NOT LIKE '%s%'");
+//		}
+//		if (this.oeuf.isSelected()) {
+//			flag = true;
+//			list_regime.add("regimes NOT LIKE '%o%'");
+//		}
+//		if (this.sesame.isSelected()) {
+//			flag = true;
+//			list_regime.add("regimes NOT LIKE '%se%'");
+//		}
+//		if (this.less30min.isSelected()) {
+//			flag2 = true;
+//			list_tps.add("(Prepa + Cuisson) < 30");
+//		}
+//
+//		if (this.entre3060min.isSelected()) {
+//			flag2 = true;
+//			list_tps.add("(Prepa + Cuisson) between 30 and 60");
+//		}
+//
+//		if (this.plus1h.isSelected()) {
+//			flag2 = true;
+//			list_tps.add("(Prepa + Cuisson) > 60");
+//		}
+//
+//		// r affiche tout
+//		String r = "select P_id, Recettes from v_globale";
+//		if (!flag) {
+//			result = "";
+//		} else {
+//			result = String.join(" AND ", list_regime);
+//			r = String.format("%s where %s", r, result);
+//		}
+//		if (!flag2) {
+//			result2 = "";
+//		} else {
+//			result2 = String.join(" OR ", list_tps);
+//			r = String.format("%s and %s", r, result2);
+//		}
+//		r = String.format("%s group by P_id", r);
+//		System.out.println(r);
+//		manager.selectReq(r);
+		
+		goPage2();
+}
+
+		
+	
+	
+	
+	@FXML
+	public void goPage2() {
+		if(flagGenerate == true) {
+			tabGenerate = manager.selectRequestStrings("SELECT R_id FROM temp_B GROUP BY R_id");
+			
+			if(tabGenerate.size()<Integer.parseInt(nbRepas.getText())) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Information Dialog");
+				alert.setHeaderText(null);
+	
+				alert.setContentText("Au vu des restrictions, le nombre de recettes possibles est inférieur au nombre demandé");
+				alert.showAndWait();
+			}
+			
+			DataShare.instance().setSelectedRecetteIds(tabGenerate);
+			DataShare.instance().setRepas(nbRepas.getText());
+			//System.out.println(DataShare.instance().getRepas());
+			//System.out.println(getTabGenerate().size());
+			try {
+				Stage stage = (Stage) this.register.getScene().getWindow();
+
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("../ProjetFspPage2.fxml"));
+				Parent root = loader.load();
+//				Parent root = FXMLLoader.load(getClass().getResource("../ProjetFspPage2.fxml"));
+
+				Scene scene = this.register.getScene();
+				scene = new Scene(root, 800, 600);
+				
+				this.controller = loader.getController();
+
+				stage.setScene(scene);
+				stage.show();
+				this.controller.showImage();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
+	
 }
