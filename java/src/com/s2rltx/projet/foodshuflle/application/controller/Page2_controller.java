@@ -26,6 +26,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -36,6 +37,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -94,6 +96,28 @@ public class Page2_controller implements Initializable {
 
 	DbManager manager = new DbManager();
 	
+	List<Integer> listeFinale = new ArrayList<Integer>();
+	
+	Page3_controller controller;
+	
+	
+	
+
+	public Pane getPaneLogin() {
+		return paneLogin;
+	}
+
+	public void setPaneLogin(Pane paneLogin) {
+		this.paneLogin = paneLogin;
+	}
+
+	public Pane getPaneUser() {
+		return paneUser;
+	}
+
+	public void setPaneUser(Pane paneUser) {
+		this.paneUser = paneUser;
+	}
 
 	public Page2_controller() {
 		super();
@@ -167,7 +191,7 @@ public class Page2_controller implements Initializable {
 	}
 
 	public void showImage() {
-		int index0 = 0,index1 = 0,index2 = 0,index3 = 0,index4 = 0,index5 = 0,index6 = 0,index7 = 0;
+		//int index0 = 0,index1 = 0,index2 = 0,index3 = 0,index4 = 0,index5 = 0,index6 = 0,index7 = 0;
 		
 		List<Integer>ids = DataShare.instance().getSelectedRecetteIds();
 		int nbBoucle = DataShare.instance().getRepas();
@@ -180,6 +204,8 @@ public class Page2_controller implements Initializable {
 		Random rand = new Random();
 		
 		if(nbBoucle>ids.size()) {nbBoucle = ids.size();}
+		
+		if(nbBoucle>8) {nbBoucle = 8;}
 					
 			for (int i = 0; i < nbBoucle; i++) {
 				
@@ -205,63 +231,117 @@ public class Page2_controller implements Initializable {
 				case 0:
 					this.image1.setImage(image);
 					ids.remove(nombre);
-					index0 = imgNb;
+					//index0 = imgNb;
+					listeFinale.add(imgNb);
 					break;
 
 				case 1:
 					this.image2.setImage(image);
 					ids.remove(nombre);
-					index1 = imgNb;
+					//index1 = imgNb;
+					listeFinale.add(imgNb);
 					break;
 					
 				case 2:
 					this.image3.setImage(image);
 					ids.remove(nombre);
-					index2 = imgNb;
+					//index2 = imgNb;
+					listeFinale.add(imgNb);
 					break;
 					
 				case 3:
 					this.image4.setImage(image);
 					ids.remove(nombre);
-					index3 = imgNb;
+					//index3 = imgNb;
+					listeFinale.add(imgNb);
 					break;
 					
 				case 4:
 					this.image5.setImage(image);
 					ids.remove(nombre);
-					index4 = imgNb;
+					//index4 = imgNb;
+					listeFinale.add(imgNb);
 					break;
 					
 				case 5:
 					this.image6.setImage(image);
 					ids.remove(nombre);
-					index5 = imgNb;
+					//index5 = imgNb;
+					listeFinale.add(imgNb);
 					break;
 					
 				case 6:
 					this.image7.setImage(image);
 					ids.remove(nombre);
-					index6 = imgNb;
+					//index6 = imgNb;
+					listeFinale.add(imgNb);
 					break;
 					
 				case 7:
 					this.image8.setImage(image);
 					ids.remove(nombre);
-					index7 = imgNb;
+					//index7 = imgNb;
+					listeFinale.add(imgNb);
 					break;
 				
 					
 				}
 				
-			}System.out.println("index0: " + index0 +  "\n" + "index1: " + index1 + "\n" + "index2: " + index2
-					+ "\n" + "index3: " + index3 + "\n" + "index4: " + index4 + "\n" + "index5: " + index5
-					+ "\n" + "index6: " + index6 + "\n" + "index7: " + index7);
+			}
+//			System.out.println("index0: " + index0 +  "\n" + "index1: " + index1 + "\n" + "index2: " + index2
+//					+ "\n" + "index3: " + index3 + "\n" + "index4: " + index4 + "\n" + "index5: " + index5
+//					+ "\n" + "index6: " + index6 + "\n" + "index7: " + index7);
+			
+			 
+			System.out.println(listeFinale);
 
 		}
 		
 
 	public void listeCourse() {
-		manager.selectReq("SELECT Ingredients, sum(Qtt) as total from temp_B where R_id = 36 or R_id = 37 group by Ingredients");
+		
+		String result = "";
+		for (int i=0;i<listeFinale.size();i++) {
+			result += "R_id = " + listeFinale.get(i) + " or ";
+		}
+		//System.out.println(result);
+		result = result.substring(0,(result.length()-3));
+				
+		List<String> datas = manager.selectRequestStrings("SELECT Ingredients, ceil((sum(Qtt)/4)*" + DataShare.instance().getPersonne() + ") as total, Unites from temp_B where " + result + "group by Ingredients");
+		
+		for(int i=0;i<datas.size();i++) {
+			System.out.print(datas.get(i) + " ");
+			if(((i+1)%3)==0) {
+				System.out.println("");
+			}
+		}
+		DataShare.instance().setResult(result);
+		
+		try {
+			Stage stage = (Stage) this.register.getScene().getWindow();
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../ProjetFspPage3.fxml"));
+			Parent root = loader.load();
+			
+
+			Scene scene = this.register.getScene();
+			scene = new Scene(root, 800, 600);
+
+			this.controller = loader.getController();
+			
+			stage.setScene(scene);
+			stage.show();
+			
+			for(int i=0;i<(datas.size()/3);i++) {
+				controller.getVBox1().getChildren().add(new Text(datas.get(i*3)));
+				controller.getVBox2().getChildren().add(new Text(datas.get(((i*3)+1))));
+				controller.getVBox3().getChildren().add(new Text(datas.get(((i*3)+2))));
+
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 	}

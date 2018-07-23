@@ -8,6 +8,8 @@ public class DataShare {
 
 	private List<Integer> selectedRecetteIds;
 	private int repas;
+	private int personne;
+	String result;
 
 	/** Singletton. */
 	private DataShare() {
@@ -21,8 +23,6 @@ public class DataShare {
 		if (selectedRecetteIds == null) this.selectedRecetteIds = null;
 		else this.selectedRecetteIds = selectedRecetteIds.stream().map(e -> Integer.parseInt(e)).collect(Collectors.toList());
 	}
-	
-	
 
 	public int getRepas() {
 		return this.repas;
@@ -30,6 +30,24 @@ public class DataShare {
 
 	public void setRepas(String repas) {
 		this.repas =Integer.parseInt(repas);
+	}
+	
+	public int getPersonne() {
+		return this.personne;
+	}
+
+	public void setPersonne(String personne) {
+		this.personne =Integer.parseInt(personne);
+	}
+	
+	
+
+	public String getResult() {
+		return result;
+	}
+
+	public void setResult(String result) {
+		this.result = result;
 	}
 
 	public static final DataShare instance() {

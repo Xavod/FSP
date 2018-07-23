@@ -15,6 +15,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 /**
@@ -27,16 +28,18 @@ public class Register_controller {
 	private TextField login;
 	
 	@FXML
-	private TextField password;
+	private PasswordField password;
 	
 	@FXML
-	private TextField confirmPassword;
+	private PasswordField confirmPassword;
 	
 	@FXML
 	private TextField email;
 	
 	@FXML
 	private Button create;
+	
+	Page1_controller controller;
 	
 	@FXML
 	public void userCreated() {
@@ -73,16 +76,40 @@ public class Register_controller {
 	
 	@FXML
 	public void goPage1() {
+//		try {
+//			Stage stage = (Stage) this.create.getScene().getWindow();
+//
+//			Parent root = FXMLLoader.load(getClass().getResource("../ProjetFspPage1.fxml"));
+//
+//			Scene scene = this.create.getScene();
+//			scene = new Scene(root, 800, 600);
+//
+//			stage.setScene(scene);
+//			stage.show();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		try {
 			Stage stage = (Stage) this.create.getScene().getWindow();
 
-			Parent root = FXMLLoader.load(getClass().getResource("../ProjetFspPage1.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../ProjetFspPage1.fxml"));
+			Parent root = loader.load();
+			// Parent root =
+			// FXMLLoader.load(getClass().getResource("../ProjetFspPage2.fxml"));
 
 			Scene scene = this.create.getScene();
 			scene = new Scene(root, 800, 600);
 
+			this.controller = loader.getController();
+
 			stage.setScene(scene);
 			stage.show();
+			this.controller.getPaneLogin().setManaged(false);
+			this.controller.getPaneUser().setManaged(true);
+			this.controller.getPaneLogin().setOpacity(0.0);
+			this.controller.getPaneUser().setOpacity(1.0);
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
