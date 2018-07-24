@@ -29,30 +29,23 @@
 				</ImageView>
 			</left>
 			<center>
-				<BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+				<BorderPane prefHeight="188.0" prefWidth="541.0" BorderPane.alignment="CENTER">
 					<center>
-						<TextField alignment="CENTER" prefHeight="48.0" prefWidth="545.0" style="-fx-background-color: #FFE6C9;" text="FOOD SHUFFLE" BorderPane.alignment="CENTER">
-							<font>
-								<Font name="AR DELANEY" size="60.0" />
-							</font>
-							<padding>
-								<Insets bottom="-20.0" />
-							</padding>
-							<BorderPane.margin>
-								<Insets bottom="-30.0" />
-							</BorderPane.margin>
-						</TextField>
+						<Pane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="90.0" prefWidth="541.0" BorderPane.alignment="CENTER">
+							<children>
+								<Text layoutX="33.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FOOD SHUFFLE" wrappingWidth="428.1600036621094">
+									<font>
+										<Font name="AR DELANEY" size="60.0" />
+									</font>
+								</Text>
+								<Text layoutX="125.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Créer vos repas en quelques clics" textAlignment="CENTER">
+									<font>
+										<Font name="System Bold Italic" size="16.0" />
+									</font>
+								</Text>
+							</children>
+						</Pane>
 					</center>
-					<bottom>
-						<TextField alignment="TOP_CENTER" style="-fx-background-color: #FFE6C9;" text="Créer vos repas en quelques clics" BorderPane.alignment="CENTER">
-							<BorderPane.margin>
-								<Insets bottom="30.0" />
-							</BorderPane.margin>
-							<font>
-								<Font name="System Bold Italic" size="16.0" />
-							</font>
-						</TextField>
-					</bottom>
 				</BorderPane>
 			</center>
 		</BorderPane>
@@ -88,11 +81,12 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Text>
+                  <Button fx:id="logOut" onMouseClicked="#logOut" layoutX="67.5" layoutY="25.0" mnemonicParsing="false" style="-fx-cursor: hand;" text="LOG OUT" />
                </children>
             </Pane>
          </children>
       </VBox>
-   </left>
+</left>
 
 	<center>
 		<VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">

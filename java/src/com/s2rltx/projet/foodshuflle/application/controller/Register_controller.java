@@ -5,6 +5,8 @@ package com.s2rltx.projet.foodshuflle.application.controller;
 
 
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import com.s2rltx.projet.foodshuflle.managerdatabase.DbManager;
 import javafx.fxml.FXML;
@@ -13,6 +15,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -41,9 +46,11 @@ public class Register_controller {
 	
 	Page1_controller controller;
 	
+	DbManager manager = new DbManager();
+	
 	@FXML
 	public void userCreated() {
-		DbManager manager = new DbManager();
+		
 		
 		if(userCreatedError()==false) {
 			manager.creationRequest("INSERT INTO Utilisateur (U_pseudo, U_mdp, U_email) VALUES ('" + login.getText() + "','" + password.getText() + "','" + email.getText() + "')");
@@ -71,6 +78,34 @@ public class Register_controller {
 			alert.setContentText("Ooops, veuillez remplir tous les champs");
 			alert.showAndWait();
 		}
+		
+		ResultSet rs = manager.selectRequest("SELECT U_pseudo FROM utilisateur WHERE U_pseudo = '"
+				+ login.getText() + "'");
+		
+			try {
+				if (rs.next() == true) {
+					alert.setContentText("Ooops, votre login est déjà utilisé");
+					alert.showAndWait();
+					result = true;
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			ResultSet rst = manager.selectRequest("SELECT U_email FROM utilisateur WHERE U_email = '" + email.getText() + "'");
+			
+				try {
+					if (rst.next() == true) {
+						alert.setContentText("Ooops, votre email est déjà utilisé");
+						alert.showAndWait();
+						result = true;
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		
 		return result;
 	}
 	

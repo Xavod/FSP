@@ -57,6 +57,9 @@ public class Page2_controller implements Initializable {
 
 	@FXML
 	private ImageView register;
+	
+	@FXML
+	private Button logOut;
 
 	@FXML
 	private ImageView generate;
@@ -149,6 +152,16 @@ public class Page2_controller implements Initializable {
 			e.printStackTrace();
 		}
 
+	}
+	
+	@FXML
+	public void logOut() {
+		this.paneLogin.setManaged(true);
+		this.paneUser.setManaged(false);
+		this.paneLogin.setOpacity(1.0);
+		this.paneUser.setOpacity(0.0);
+		this.login.clear();
+		this.password.clear();
 	}
 
 	public void testLogin() {

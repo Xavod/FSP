@@ -1,5 +1,8 @@
 package com.s2rltx.projet.foodshuflle.application.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -25,8 +28,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -54,6 +59,9 @@ public class Page1_controller implements Initializable {
 
 	@FXML
 	private ImageView register;
+	
+	@FXML
+	private Button logOut;
 
 	@FXML
 	private ImageView generate;
@@ -165,6 +173,16 @@ public class Page1_controller implements Initializable {
 		}
 
 	}
+	
+	@FXML
+	public void logOut() {
+		this.paneLogin.setManaged(true);
+		this.paneUser.setManaged(false);
+		this.paneLogin.setOpacity(1.0);
+		this.paneUser.setOpacity(0.0);
+		this.login.clear();
+		this.password.clear();
+	}
 
 	public void testLogin() {
 		Alert alert = new Alert(AlertType.ERROR);
@@ -206,23 +224,48 @@ public class Page1_controller implements Initializable {
 	}
 
 	public String addExclus() {
-		this.vBoxExclusion.getChildren().add(new Text(exclusion.getText()));
-		resultEx += "ingredients LIKE \"%" + exclusion.getText() + "%\" and ";
-		return resultEx;
-		// System.out.println(resultEx);
-	}
+		HBox hBox = new HBox();
+		String filename = String.format("image/cross.png");
+		File img = new File(filename);
 
-	/*
-	 * @FXML public void apparenceCursor() {
-	 * 
-	 * generer.setOnMouseEntered(new EventHandler() { public void handle(MouseEvent
-	 * me) { generer.setCursor(Cursor.HAND); //Change cursor to hand }
-	 * 
-	 * @Override public void handle(Event event) { // TODO Auto-generated method
-	 * stub
-	 * 
-	 * } }); }
-	 */
+		Image image = null;
+
+		try {
+			image = new Image(new FileInputStream(img), 10d, 10d, true, true);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setTitle("Error Dialog");
+		alert.setHeaderText(null);
+		ResultSet rs = manager.selectRequest("SELECT I_nom FROM ingredient WHERE I_nom = '"
+				+ exclusion.getText() + "'");
+		if (!exclusion.getText().equals("")) {
+			try {
+				if (rs.next() == false) {
+					alert.setContentText("Ooops, votre ingrédient n'est pas reconnu");
+					alert.showAndWait();
+				} else {
+					this.vBoxExclusion.getChildren().add(new HBox(hBox));
+					hBox.getChildren().addAll(new Text(exclusion.getText()),new ImageView(image));
+					this.exclusion.clear();
+					resultEx += "ingredients LIKE \"%" + exclusion.getText() + "%\" and ";
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		
+//		if(!hBox.getOnMouseClicked()) {
+//			hBox.setManaged(false);
+//		}
+			
+		
+		return resultEx;
+		
+	}
 
 	@FXML
 	public void generate() {
@@ -230,7 +273,7 @@ public class Page1_controller implements Initializable {
 		boolean flagPers = false;
 		boolean flagRepas = false;
 
-		if (nbPers.getText().matches("\\d{1,3}")) {
+		if (nbPers.getText().matches("\\d{1,3}") && !nbPers.getText().equals("0")) {
 			flagPers = true;
 		} else {
 			Alert alert = new Alert(AlertType.ERROR);
@@ -241,7 +284,7 @@ public class Page1_controller implements Initializable {
 			alert.showAndWait();
 		}
 
-		if (nbRepas.getText().matches("\\d")) {
+		if (nbRepas.getText().matches("\\d") && !nbRepas.getText().equals("0")) {
 			flagRepas = true;
 		} else {
 			Alert alert = new Alert(AlertType.ERROR);
@@ -275,9 +318,15 @@ public class Page1_controller implements Initializable {
 		String F = "";
 		String P = "";
 		String C = "";
-
+		String LESS = "";
+		String BETWEEN = "";
+		String SUP = "";
+		
 		String result = "";
+		String resultTime ="";
+		
 		boolean flag = false;
+		boolean flagTime = false;
 
 		if (this.vegetarien.isSelected()) {
 			// manager.selectReq("SELECT* FROM v_A WHERE regimes LIKE \"%V%\"" );
@@ -324,7 +373,28 @@ public class Page1_controller implements Initializable {
 			Se = "regimes NOT LIKE \"%Se%\" and ";
 			flag = true;
 		}
-		result = "WHERE " + V + S + O + Se + P + C + L + G + A + M + F + "\"";
+		
+		if (this.less30min.isSelected()) {
+			LESS = "(prepa+cuisson) < 30 or ";
+			flagTime = true;
+		}
+		
+		if (this.entre3060min.isSelected()) {
+			BETWEEN = "(prepa+cuisson) between 30 and 60 or ";
+			flagTime = true;
+		}
+		
+		if (this.plus1h.isSelected()) {
+			SUP = "(prepa+cuisson) > 60 or ";
+			flagTime = true;
+		}
+		
+			
+		if(flagTime == true) {
+			resultTime = LESS + BETWEEN + SUP;
+			resultTime = resultTime.substring(0, (resultTime.length()-4));
+			result = "WHERE " + resultTime + " and "+ V + S + O + Se + P + C + L + G + A + M + F + "\"";
+		}else {result = "WHERE " + V + S + O + Se + P + C + L + G + A + M + F + "\"";}
 		
 		
 
