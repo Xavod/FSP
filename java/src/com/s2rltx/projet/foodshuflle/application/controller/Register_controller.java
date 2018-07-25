@@ -150,4 +150,26 @@ public class Register_controller {
 			e.printStackTrace();
 		}
 	}
+	public void goMain() {
+		try {
+			Stage stage = (Stage) this.create.getScene().getWindow();
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../ProjetFspPage1.fxml"));
+			Parent root = loader.load();
+			// Parent root =
+			// FXMLLoader.load(getClass().getResource("../ProjetFspPage2.fxml"));
+
+			Scene scene = this.create.getScene();
+			scene = new Scene(root, 800, 600);
+
+			this.controller = loader.getController();
+
+			stage.setScene(scene);
+			stage.show();
+						
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

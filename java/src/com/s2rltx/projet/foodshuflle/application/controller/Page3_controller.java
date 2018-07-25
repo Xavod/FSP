@@ -13,8 +13,11 @@ import com.s2rltx.projet.foodshuflle.managerdatabase.DbManager;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextArea;
@@ -24,6 +27,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class Page3_controller implements Initializable {
 
@@ -155,6 +159,29 @@ public class Page3_controller implements Initializable {
 //		pane3.getChildren().add(new Text(controller.getDatas().get(((i*3)+2))));
 //	   }
 //		
+	}
+	
+	public void goMain() {
+		try {
+			Stage stage = (Stage) this.imprimer.getScene().getWindow();
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../ProjetFspPage1.fxml"));
+			Parent root = loader.load();
+			// Parent root =
+			// FXMLLoader.load(getClass().getResource("../ProjetFspPage2.fxml"));
+
+			Scene scene = this.imprimer.getScene();
+			scene = new Scene(root, 800, 600);
+
+			//this.controller = loader.getController();
+
+			stage.setScene(scene);
+			stage.show();
+						
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	

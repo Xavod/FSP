@@ -27,9 +27,14 @@
  
     <TextField fx:id="email" GridPane.columnIndex="1" GridPane.rowIndex="4" />
     
-   <Button fx:id="create" mnemonicParsing="false" onMouseClicked="#userCreated" text="Create" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+   <Button fx:id="create" mnemonicParsing="false" onMouseClicked="#userCreated" text="Créer" GridPane.columnIndex="1" GridPane.rowIndex="5" />
    <PasswordField fx:id="password" GridPane.columnIndex="1" GridPane.rowIndex="2" />
    <PasswordField fx:id="confirmPassword" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+   <Button mnemonicParsing="false" text="Retour accueil" GridPane.columnIndex="1" GridPane.rowIndex="5" onMouseClicked="#goMain">
+      <GridPane.margin>
+         <Insets left="60.0" />
+      </GridPane.margin>
+   </Button>
    
    <columnConstraints>
       <ColumnConstraints />

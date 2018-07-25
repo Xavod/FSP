@@ -151,6 +151,7 @@ public class Page1_controller implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		this.paneLogin.setManaged(true);
 		this.paneUser.setManaged(false);
+		this.paneUser.setLayoutY(300.0);
 		this.paneUser.setOpacity(0.0);
 
 	}
@@ -180,6 +181,7 @@ public class Page1_controller implements Initializable {
 		this.paneUser.setManaged(false);
 		this.paneLogin.setOpacity(1.0);
 		this.paneUser.setOpacity(0.0);
+		this.paneUser.setLayoutY(300.0);
 		this.login.clear();
 		this.password.clear();
 	}
@@ -238,8 +240,8 @@ public class Page1_controller implements Initializable {
 		Alert alert = new Alert(AlertType.ERROR);
 		alert.setTitle("Error Dialog");
 		alert.setHeaderText(null);
-		ResultSet rs = manager.selectRequest("SELECT I_nom FROM ingredient WHERE I_nom = '"
-				+ exclusion.getText() + "'");
+		ResultSet rs = manager.selectRequest("SELECT I_nom FROM ingredient WHERE I_nom like '"
+				+ exclusion.getText() + "%'");
 		if (!exclusion.getText().equals("")) {
 			try {
 				if (rs.next() == false) {
@@ -248,9 +250,14 @@ public class Page1_controller implements Initializable {
 				} else {
 					this.vBoxExclusion.getChildren().add(new HBox(hBox));
 					hBox.getChildren().addAll(new Text(exclusion.getText()),new ImageView(image));
-					this.exclusion.clear();
 					resultEx += "ingredients LIKE \"%" + exclusion.getText() + "%\" and ";
+					this.exclusion.clear();
 				}
+				hBox.setOnMouseClicked((new EventHandler<MouseEvent>() { 
+					   public void handle(MouseEvent event) {
+						   hBox.getChildren().clear();
+					    } 
+					}));
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -301,11 +308,11 @@ public class Page1_controller implements Initializable {
 
 		manager.creationRequest("DROP TABLE IF EXISTS temp_A");
 		manager.creationRequest("CREATE TABLE temp_A (id int auto_increment primary key not null,"
-				+ " R_id int(11), Recettes varchar(250), Regimes varchar(250), I_id int(11), Ingredients varchar(250),"
+				+ " P_id int(11), Recettes varchar(250), Regimes varchar(250), I_id int(11), Ingredients varchar(250),"
 				+ " Qtt decimal(10,2), Unites varchar(25), Groupes varchar(100), Pers int(11), Prepa int(11), Cuisson int(11), kcal int(11))");
 		manager.creationRequest(
-				"INSERT INTO temp_A (R_id, Recettes, Regimes, I_id, Ingredients, Qtt, Unites, Groupes, Pers, Prepa, Cuisson, kcal)"
-						+ " SELECT R_id, Recettes, Regimes, I_id, Ingredients, Qtt, Unites, Groupes, Pers, Prepa, Cuisson, kcal FROM v_globale");
+				"INSERT INTO temp_A (P_id, Recettes, Regimes, I_id, Ingredients, Qtt, Unites, Groupes, Pers, Prepa, Cuisson, kcal)"
+						+ " SELECT P_id, Recettes, Regimes, I_id, Ingredients, Qtt, Unites, Groupes, Pers, Prepa, Cuisson, kcal FROM v_globale");
 
 		String V = "";
 		String G = "";
@@ -404,37 +411,39 @@ public class Page1_controller implements Initializable {
 			result = result.substring(0, (result.length() - 6));
 			manager.creationRequest("DROP TABLE IF EXISTS temp_B");
 			manager.creationRequest("CREATE TABLE temp_B (id int auto_increment primary key not null,"
-					+ " R_id int(11), Recettes varchar(250), Regimes varchar(250), I_id int(11), Ingredients varchar(250),"
+					+ " P_id int(11), Recettes varchar(250), Regimes varchar(250), I_id int(11), Ingredients varchar(250),"
 					+ " Qtt decimal(10,2), Unites varchar(25), Groupes varchar(100), Pers int(11), Prepa int(11), Cuisson int(11), kcal int(11))");
 			manager.creationRequest(
-					"INSERT INTO temp_B (R_id, Recettes, Regimes, I_id, Ingredients, Qtt, Unites, Groupes, Pers, Prepa, Cuisson, kcal)"
-							+ " SELECT R_id, Recettes, Regimes, I_id, Ingredients, Qtt, Unites, Groupes, Pers, Prepa, Cuisson, kcal FROM temp_A "
+					"INSERT INTO temp_B (P_id, Recettes, Regimes, I_id, Ingredients, Qtt, Unites, Groupes, Pers, Prepa, Cuisson, kcal)"
+							+ " SELECT P_id, Recettes, Regimes, I_id, Ingredients, Qtt, Unites, Groupes, Pers, Prepa, Cuisson, kcal FROM temp_A "
 							+ result);
 
 			if (resultEx.length() > 0) {
 				resultEx = resultEx.substring(0, (resultEx.length() - 5));
-				result = "SELECT R_id FROM temp_A WHERE " + resultEx;
-				manager.creationRequest("DELETE FROM temp_B WHERE R_id in (" + result + ")");
-				manager.selectReq("SELECT id, R_id, recettes FROM temp_B group by R_id");
+				System.out.println(resultEx);
+				result = "SELECT P_id FROM temp_A WHERE " + resultEx;
+				manager.creationRequest("DELETE FROM temp_B WHERE P_id in (" + result + ")");
+				System.out.println("DELETE FROM temp_B WHERE P_id in (" + result + ")");
+				manager.selectReq("SELECT id, P_id, recettes FROM temp_B group by P_id");
 			} else {
-				manager.selectReq("SELECT id, R_id, recettes FROM temp_B group by R_id");
+				manager.selectReq("SELECT id, P_id, recettes FROM temp_B group by P_id");
 			}
 		} else {
-			manager.selectReq("SELECT id, R_id, recettes FROM temp_A group by R_id");
+			manager.selectReq("SELECT id, P_id, recettes FROM temp_A group by P_id");
 		}
 		if (flag = false) {
 			if (resultEx.length() > 0) {
 				resultEx = resultEx.substring(0, (resultEx.length() - 5));
 				manager.creationRequest("DROP TABLE IF EXISTS temp_B");
 				manager.creationRequest("CREATE TABLE temp_B (id int auto_increment primary key not null,"
-						+ " R_id int(11), Recettes varchar(250), Regimes varchar(250), I_id int(11), Ingredients varchar(250),"
+						+ " P_id int(11), Recettes varchar(250), Regimes varchar(250), I_id int(11), Ingredients varchar(250),"
 						+ " Qtt decimal(10,2), Unites varchar(25), Groupes varchar(100), Pers int(11), Prepa int(11), Cuisson int(11), kcal int(11))");
 				manager.creationRequest(
-						"INSERT INTO temp_B (R_id, Recettes, Regimes, I_id, Ingredients, Qtt, Unites, Groupes, Pers, Prepa, Cuisson, kcal)"
-								+ " SELECT R_id, Recettes, Regimes, I_id, Ingredients, Qtt, Unites, Groupes, Pers, Prepa, Cuisson, kcal FROM temp_A ");
-				result = "SELECT R_id FROM temp_A WHERE " + resultEx;
-				manager.creationRequest("DELETE FROM temp_B WHERE R_id in (" + result + ")");
-				manager.selectReq("SELECT id, R_id, recettes FROM temp_B group by R_id");
+						"INSERT INTO temp_B (P_id, Recettes, Regimes, I_id, Ingredients, Qtt, Unites, Groupes, Pers, Prepa, Cuisson, kcal)"
+								+ " SELECT P_id, Recettes, Regimes, I_id, Ingredients, Qtt, Unites, Groupes, Pers, Prepa, Cuisson, kcal FROM temp_A ");
+				result = "SELECT P_id FROM temp_A WHERE " + resultEx;
+				manager.creationRequest("DELETE FROM temp_B WHERE P_id in (" + result + ")");
+				manager.selectReq("SELECT id, P_id, recettes FROM temp_B group by P_id");
 
 			}
 		}
@@ -532,7 +541,7 @@ public class Page1_controller implements Initializable {
 	public void goPage2() {
 
 		if (flagGenerate == true) {
-			tabGenerate = manager.selectRequestStrings("SELECT R_id FROM temp_B GROUP BY R_id");
+			tabGenerate = manager.selectRequestStrings("SELECT P_id FROM temp_B GROUP BY P_id");
 
 			if (tabGenerate.size() < Integer.parseInt(nbRepas.getText())) {
 				Alert alert = new Alert(AlertType.ERROR);

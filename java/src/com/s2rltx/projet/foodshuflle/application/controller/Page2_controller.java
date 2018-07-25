@@ -37,6 +37,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
@@ -123,6 +124,12 @@ public class Page2_controller implements Initializable {
 	
 	@FXML
 	private Label label8;
+	
+	@FXML
+	private VBox vboxFavori;
+	
+	@FXML
+	private Button goMain;
 
 	DbManager manager = new DbManager();
 	
@@ -169,6 +176,7 @@ public class Page2_controller implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		this.paneLogin.setManaged(true);
 		this.paneUser.setManaged(false);
+		this.paneUser.setLayoutY(300.0);
 		this.paneUser.setOpacity(0.0);
 
 	}
@@ -390,37 +398,10 @@ public class Page2_controller implements Initializable {
 		
 	public void titleRecipe() {
 		
-////		Alert alert = new Alert(AlertType.ERROR);
-////		alert.setTitle("Information");
-////		alert.setHeaderText(null);
-//		
-//		
 		List<String> result = new ArrayList<String>();
-		String request = "";
-//		for (int i=0;i<listeFinale.size();i++) {
-//			request += String.format(listeFinale.get(i) + " or R_id = ");
-//			//System.out.println(request);
-//		}
-//		request = request.substring(0,(request.length()-11));
-//		System.out.println(request);
-//		
-//		result = manager.selectRequestStrings("select recettes from temp_B where R_id = " + request); /*+ " group by R_id");*/
-//		System.out.println(result);
-//		for(int i=0;i<result.size();i++) {
-//			System.out.println();
-//		}
-		//result = manager.selectRequestStrings("select recettes from temp_B where R_id = " + listeFinale.get(0));
-		
-		
-		
-			//System.out.println("select recettes from temp_B where R_id = " + (listeFinale.get(i)));
-			
-			//System.out.println(result);
-			
-		
 		
 		if(image1.getImage()!=null) {
-			result = manager.selectRequestStrings("select recettes from temp_B where R_id = " + listeFinale.get(0) + " group by R_id");
+			result = manager.selectRequestStrings("select recettes from temp_B where P_id = " + listeFinale.get(0) + " group by P_id");
 			label1.setText(result.get(0));
 			label1.setOpacity(1);
 			System.out.println(result.get(0));
@@ -428,7 +409,7 @@ public class Page2_controller implements Initializable {
 		}
 		
 		if(image2.getImage()!=null) {
-			result = manager.selectRequestStrings("select recettes from temp_B where R_id = " + listeFinale.get(1) + " group by R_id");
+			result = manager.selectRequestStrings("select recettes from temp_B where P_id = " + listeFinale.get(1) + " group by P_id");
 			label2.setText(result.get(0));
 			label2.setOpacity(1);
 			System.out.println(result.get(0));
@@ -436,7 +417,7 @@ public class Page2_controller implements Initializable {
 		}
 		
 		if(image3.getImage()!=null) {
-			result = manager.selectRequestStrings("select recettes from temp_B where R_id = " + listeFinale.get(2) + " group by R_id");
+			result = manager.selectRequestStrings("select recettes from temp_B where P_id = " + listeFinale.get(2) + " group by P_id");
 			label3.setText(result.get(0));
 			label3.setOpacity(1);
 			System.out.println(result.get(0));
@@ -444,7 +425,7 @@ public class Page2_controller implements Initializable {
 		}
 		
 		if(image4.getImage()!=null) {
-			result = manager.selectRequestStrings("select recettes from temp_B where R_id = " + listeFinale.get(3) + " group by R_id");
+			result = manager.selectRequestStrings("select recettes from temp_B where P_id = " + listeFinale.get(3) + " group by P_id");
 			label4.setText(result.get(0));
 			label4.setOpacity(1);
 			System.out.println(result.get(0));
@@ -452,7 +433,7 @@ public class Page2_controller implements Initializable {
 		}
 		
 		if(image5.getImage()!=null) {
-			result = manager.selectRequestStrings("select recettes from temp_B where R_id = " + listeFinale.get(4) + " group by R_id");
+			result = manager.selectRequestStrings("select recettes from temp_B where P_id = " + listeFinale.get(4) + " group by P_id");
 			label5.setText(result.get(0));
 			label5.setOpacity(1);
 			System.out.println(result.get(0));
@@ -460,7 +441,7 @@ public class Page2_controller implements Initializable {
 		}
 		
 		if(image6.getImage()!=null) {
-			result = manager.selectRequestStrings("select recettes from temp_B where R_id = " + listeFinale.get(5) + " group by R_id");
+			result = manager.selectRequestStrings("select recettes from temp_B where P_id = " + listeFinale.get(5) + " group by P_id");
 			label6.setText(result.get(0));
 			label6.setOpacity(1);
 			System.out.println(result.get(0));
@@ -468,7 +449,7 @@ public class Page2_controller implements Initializable {
 		}
 		
 		if(image7.getImage()!=null) {
-			result = manager.selectRequestStrings("select recettes from temp_B where R_id = " + listeFinale.get(6) + " group by R_id");
+			result = manager.selectRequestStrings("select recettes from temp_B where P_id = " + listeFinale.get(6) + " group by P_id");
 			label7.setText(result.get(0));
 			label7.setOpacity(1);
 			System.out.println(result.get(0));
@@ -476,7 +457,7 @@ public class Page2_controller implements Initializable {
 		}
 		
 		if(image8.getImage()!=null) {
-			result = manager.selectRequestStrings("select recettes from temp_B where R_id = " + listeFinale.get(7) + " group by R_id");
+			result = manager.selectRequestStrings("select recettes from temp_B where P_id = " + listeFinale.get(7) + " group by P_id");
 			label8.setText(result.get(0));
 			label8.setOpacity(1);
 			System.out.println(result.get(0));
@@ -495,10 +476,10 @@ public class Page2_controller implements Initializable {
 	
 	public void listeCourse() {
 		
-		TilePane tilepane = new TilePane();
+		//TilePane tilepane = new TilePane();
 		String result = "";
 		for (int i=0;i<listeFinale.size();i++) {
-			result += "R_id = " + listeFinale.get(i) + " or ";
+			result += "P_id = " + listeFinale.get(i) + " or ";
 		}
 		//System.out.println(result);
 		result = result.substring(0,(result.length()-3));
@@ -553,10 +534,178 @@ public class Page2_controller implements Initializable {
 ////				controller.getPane3().getChildren().add(new Text(datas.get(((i*3)+2))));
 
 		}
+	public void addFavoriNotLog() {
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setTitle("Information");
+		alert.setHeaderText(null);
+		alert.setContentText("Veuillez vous connecter à votre profil");
+		alert.showAndWait();
+	}
 	
-	public void addFavori() {
+	public void addFavoriImg1() {
+		HBox hBox = new HBox();
+		String filename = String.format("image/cross.png");
+		File img = new File(filename);
+
+		Image image = null;
+
+		try {
+			image = new Image(new FileInputStream(img), 10d, 10d, true, true);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 		if(paneUser.getOpacity()==1.0) {
-			
+			this.vboxFavori.getChildren().add(new HBox(hBox));
+			hBox.getChildren().addAll(new Text(label1.getText()),new ImageView(image));
+		}else {addFavoriNotLog();}
+	}
+	
+	public void addFavoriImg2() {
+		HBox hBox = new HBox();
+		String filename = String.format("image/cross.png");
+		File img = new File(filename);
+
+		Image image = null;
+
+		try {
+			image = new Image(new FileInputStream(img), 10d, 10d, true, true);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		if(paneUser.getOpacity()==1.0) {
+			this.vboxFavori.getChildren().add(new HBox(hBox));
+			hBox.getChildren().addAll(new Text(label2.getText()),new ImageView(image));
+		}else {addFavoriNotLog();}
+	}
+	
+	public void addFavoriImg3() {
+		HBox hBox = new HBox();
+		String filename = String.format("image/cross.png");
+		File img = new File(filename);
+
+		Image image = null;
+
+		try {
+			image = new Image(new FileInputStream(img), 10d, 10d, true, true);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		if(paneUser.getOpacity()==1.0) {
+			this.vboxFavori.getChildren().add(new HBox(hBox));
+			hBox.getChildren().addAll(new Text(label3.getText()),new ImageView(image));
+		}else {addFavoriNotLog();}
+	}
+	
+	public void addFavoriImg4() {
+		HBox hBox = new HBox();
+		String filename = String.format("image/cross.png");
+		File img = new File(filename);
+
+		Image image = null;
+
+		try {
+			image = new Image(new FileInputStream(img), 10d, 10d, true, true);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		if(paneUser.getOpacity()==1.0) {
+			this.vboxFavori.getChildren().add(new HBox(hBox));
+			hBox.getChildren().addAll(new Text(label4.getText()),new ImageView(image));
+		}else {addFavoriNotLog();}
+	}
+	
+	public void addFavoriImg5() {
+		HBox hBox = new HBox();
+		String filename = String.format("image/cross.png");
+		File img = new File(filename);
+
+		Image image = null;
+
+		try {
+			image = new Image(new FileInputStream(img), 10d, 10d, true, true);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		if(paneUser.getOpacity()==1.0) {
+			this.vboxFavori.getChildren().add(new HBox(hBox));
+			hBox.getChildren().addAll(new Text(label5.getText()),new ImageView(image));
+		}
+	}
+	
+	public void addFavoriImg6() {
+		HBox hBox = new HBox();
+		String filename = String.format("image/cross.png");
+		File img = new File(filename);
+
+		Image image = null;
+
+		try {
+			image = new Image(new FileInputStream(img), 10d, 10d, true, true);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		if(paneUser.getOpacity()==1.0) {
+			this.vboxFavori.getChildren().add(new HBox(hBox));
+			hBox.getChildren().addAll(new Text(label6.getText()),new ImageView(image));
+		}else {addFavoriNotLog();}
+	}
+	
+	public void addFavoriImg7() {
+		HBox hBox = new HBox();
+		String filename = String.format("image/cross.png");
+		File img = new File(filename);
+
+		Image image = null;
+
+		try {
+			image = new Image(new FileInputStream(img), 10d, 10d, true, true);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		if(paneUser.getOpacity()==1.0) {
+			this.vboxFavori.getChildren().add(new HBox(hBox));
+			hBox.getChildren().addAll(new Text(label7.getText()),new ImageView(image));
+		}else {addFavoriNotLog();}
+	}
+	
+	public void addFavoriImg8() {
+		HBox hBox = new HBox();
+		String filename = String.format("image/cross.png");
+		File img = new File(filename);
+
+		Image image = null;
+
+		try {
+			image = new Image(new FileInputStream(img), 10d, 10d, true, true);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		if(paneUser.getOpacity()==1.0) {
+			this.vboxFavori.getChildren().add(new HBox(hBox));
+			hBox.getChildren().addAll(new Text(label8.getText()),new ImageView(image));
+		}else {addFavoriNotLog();}
+	}
+	
+	public void goMain() {
+		try {
+			Stage stage = (Stage) this.register.getScene().getWindow();
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../ProjetFspPage1.fxml"));
+			Parent root = loader.load();
+			// Parent root =
+			// FXMLLoader.load(getClass().getResource("../ProjetFspPage2.fxml"));
+
+			Scene scene = this.register.getScene();
+			scene = new Scene(root, 800, 600);
+
+			//this.controller = loader.getController();
+
+			stage.setScene(scene);
+			stage.show();
+						
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 }
