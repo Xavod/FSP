@@ -32,11 +32,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.TilePane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -75,36 +78,71 @@ public class Page2_controller implements Initializable {
 
 	@FXML
 	private ImageView image1;
+	
+	@FXML
+	private Label label1;
 
 	@FXML
 	private ImageView image2;
+	
+	@FXML
+	private Label label2;
 
 	@FXML
 	private ImageView image3;
+	
+	@FXML
+	private Label label3;
 
 	@FXML
 	private ImageView image4;
+	
+	@FXML
+	private Label label4;
 
 	@FXML
 	private ImageView image5;
+	
+	@FXML
+	private Label label5;
 
 	@FXML
 	private ImageView image6;
+	
+	@FXML
+	private Label label6;
 
 	@FXML
 	private ImageView image7;
+	
+	@FXML
+	private Label label7;
 
 	@FXML
 	private ImageView image8;
+	
+	@FXML
+	private Label label8;
 
 	DbManager manager = new DbManager();
 	
 	List<Integer> listeFinale = new ArrayList<Integer>();
 	
+	List<String> datas = new ArrayList<String>();
+	
 	Page3_controller controller;
+	Page1_controller controller1;
 	
 	
 	
+
+	public List<String> getDatas() {
+		return datas;
+	}
+
+	public void setDatas(List<String> datas) {
+		this.datas = datas;
+	}
 
 	public Pane getPaneLogin() {
 		return paneLogin;
@@ -219,6 +257,13 @@ public class Page2_controller implements Initializable {
 		if(nbBoucle>ids.size()) {nbBoucle = ids.size();}
 		
 		if(nbBoucle>8) {nbBoucle = 8;}
+		
+//		List<String> result = new ArrayList<String>();
+//		for(int i=0;i<listeFinale.size();i++) {
+//			System.out.println("select recettes from temp_B where R_id = " + (listeFinale.get(i)));
+//			result = (manager.selectRequestStrings("select recettes from temp_B where R_id = " + (listeFinale.get(i))));
+//			System.out.println(result);
+//		}
 					
 			for (int i = 0; i < nbBoucle; i++) {
 				
@@ -238,7 +283,13 @@ public class Page2_controller implements Initializable {
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				}
-					
+				
+//				List<String> result = new ArrayList<String>();
+				
+//					System.out.println("select recettes from temp_B where R_id = " + (listeFinale.get())));
+//					
+//					System.out.println(result);
+									
 				switch (i) {
 
 				case 0:
@@ -246,6 +297,9 @@ public class Page2_controller implements Initializable {
 					ids.remove(nombre);
 					//index0 = imgNb;
 					listeFinale.add(imgNb);
+//					result = manager.selectRequestStrings("select recettes from temp_B where R_id = " + (listeFinale.get(0)));
+//					label1.setText(result.get(0));
+//					label1.setOpacity(1);
 					break;
 
 				case 1:
@@ -253,6 +307,9 @@ public class Page2_controller implements Initializable {
 					ids.remove(nombre);
 					//index1 = imgNb;
 					listeFinale.add(imgNb);
+//					result = manager.selectRequestStrings("select recettes from temp_B where R_id = " + (listeFinale.get(1)));
+//					label2.setText(result.get(1));
+//					label2.setOpacity(1);
 					break;
 					
 				case 2:
@@ -260,6 +317,9 @@ public class Page2_controller implements Initializable {
 					ids.remove(nombre);
 					//index2 = imgNb;
 					listeFinale.add(imgNb);
+//					result = manager.selectRequestStrings("select recettes from temp_B where R_id = " + (listeFinale.get(2)));
+//					label3.setText(result.get(2));
+//					label3.setOpacity(1);
 					break;
 					
 				case 3:
@@ -267,6 +327,9 @@ public class Page2_controller implements Initializable {
 					ids.remove(nombre);
 					//index3 = imgNb;
 					listeFinale.add(imgNb);
+//					result = manager.selectRequestStrings("select recettes from temp_B where R_id = " + (listeFinale.get(3)));
+//					label4.setText(result.get(3));
+//					label4.setOpacity(1);
 					break;
 					
 				case 4:
@@ -274,6 +337,9 @@ public class Page2_controller implements Initializable {
 					ids.remove(nombre);
 					//index4 = imgNb;
 					listeFinale.add(imgNb);
+//					result = manager.selectRequestStrings("select recettes from temp_B where R_id = " + (listeFinale.get(4)));
+//					label5.setText(result.get(4));
+//					label5.setOpacity(1);
 					break;
 					
 				case 5:
@@ -281,6 +347,9 @@ public class Page2_controller implements Initializable {
 					ids.remove(nombre);
 					//index5 = imgNb;
 					listeFinale.add(imgNb);
+//					result = manager.selectRequestStrings("select recettes from temp_B where R_id = " + (listeFinale.get(5)));
+//					label6.setText(result.get(5));
+//					label6.setOpacity(1);
 					break;
 					
 				case 6:
@@ -288,6 +357,9 @@ public class Page2_controller implements Initializable {
 					ids.remove(nombre);
 					//index6 = imgNb;
 					listeFinale.add(imgNb);
+//					result = manager.selectRequestStrings("select recettes from temp_B where R_id = " + (listeFinale.get(6)));
+//					label7.setText(result.get(6));
+//					label7.setOpacity(1);
 					break;
 					
 				case 7:
@@ -295,24 +367,135 @@ public class Page2_controller implements Initializable {
 					ids.remove(nombre);
 					//index7 = imgNb;
 					listeFinale.add(imgNb);
+//					result = manager.selectRequestStrings("select recettes from temp_B where R_id = " + (listeFinale.get(7)));
+//					label8.setText(result.get(i));
+//					label8.setOpacity(1);
 					break;
 				
 					
 				}
+//				for(int j = 0;j<result.size();j++) {
+//					System.out.print(result.get(j));
+//				}
 				
 			}
 //			System.out.println("index0: " + index0 +  "\n" + "index1: " + index1 + "\n" + "index2: " + index2
 //					+ "\n" + "index3: " + index3 + "\n" + "index4: " + index4 + "\n" + "index5: " + index5
 //					+ "\n" + "index6: " + index6 + "\n" + "index7: " + index7);
 			
-			 
+			
 			System.out.println(listeFinale);
-
+			titleRecipe();
 		}
 		
-
+	public void titleRecipe() {
+		
+////		Alert alert = new Alert(AlertType.ERROR);
+////		alert.setTitle("Information");
+////		alert.setHeaderText(null);
+//		
+//		
+		List<String> result = new ArrayList<String>();
+		String request = "";
+//		for (int i=0;i<listeFinale.size();i++) {
+//			request += String.format(listeFinale.get(i) + " or R_id = ");
+//			//System.out.println(request);
+//		}
+//		request = request.substring(0,(request.length()-11));
+//		System.out.println(request);
+//		
+//		result = manager.selectRequestStrings("select recettes from temp_B where R_id = " + request); /*+ " group by R_id");*/
+//		System.out.println(result);
+//		for(int i=0;i<result.size();i++) {
+//			System.out.println();
+//		}
+		//result = manager.selectRequestStrings("select recettes from temp_B where R_id = " + listeFinale.get(0));
+		
+		
+		
+			//System.out.println("select recettes from temp_B where R_id = " + (listeFinale.get(i)));
+			
+			//System.out.println(result);
+			
+		
+		
+		if(image1.getImage()!=null) {
+			result = manager.selectRequestStrings("select recettes from temp_B where R_id = " + listeFinale.get(0) + " group by R_id");
+			label1.setText(result.get(0));
+			label1.setOpacity(1);
+			System.out.println(result.get(0));
+			result.remove(0);
+		}
+		
+		if(image2.getImage()!=null) {
+			result = manager.selectRequestStrings("select recettes from temp_B where R_id = " + listeFinale.get(1) + " group by R_id");
+			label2.setText(result.get(0));
+			label2.setOpacity(1);
+			System.out.println(result.get(0));
+			result.remove(0);
+		}
+		
+		if(image3.getImage()!=null) {
+			result = manager.selectRequestStrings("select recettes from temp_B where R_id = " + listeFinale.get(2) + " group by R_id");
+			label3.setText(result.get(0));
+			label3.setOpacity(1);
+			System.out.println(result.get(0));
+			result.remove(0);
+		}
+		
+		if(image4.getImage()!=null) {
+			result = manager.selectRequestStrings("select recettes from temp_B where R_id = " + listeFinale.get(3) + " group by R_id");
+			label4.setText(result.get(0));
+			label4.setOpacity(1);
+			System.out.println(result.get(0));
+			result.remove(0);
+		}
+		
+		if(image5.getImage()!=null) {
+			result = manager.selectRequestStrings("select recettes from temp_B where R_id = " + listeFinale.get(4) + " group by R_id");
+			label5.setText(result.get(0));
+			label5.setOpacity(1);
+			System.out.println(result.get(0));
+			result.remove(0);
+		}
+		
+		if(image6.getImage()!=null) {
+			result = manager.selectRequestStrings("select recettes from temp_B where R_id = " + listeFinale.get(5) + " group by R_id");
+			label6.setText(result.get(0));
+			label6.setOpacity(1);
+			System.out.println(result.get(0));
+			result.remove(0);
+		}
+		
+		if(image7.getImage()!=null) {
+			result = manager.selectRequestStrings("select recettes from temp_B where R_id = " + listeFinale.get(6) + " group by R_id");
+			label7.setText(result.get(0));
+			label7.setOpacity(1);
+			System.out.println(result.get(0));
+			result.remove(0);
+		}
+		
+		if(image8.getImage()!=null) {
+			result = manager.selectRequestStrings("select recettes from temp_B where R_id = " + listeFinale.get(7) + " group by R_id");
+			label8.setText(result.get(0));
+			label8.setOpacity(1);
+			System.out.println(result.get(0));
+			result.remove(0);
+		}
+		
+////		
+////		}
+////		
+////		Alert alert = new Alert(AlertType.ERROR);
+////		alert.setTitle("Information");
+////		alert.setHeaderText(null);
+////
+////		
+	}
+	
 	public void listeCourse() {
 		
+		TilePane tilepane = new TilePane();
 		String result = "";
 		for (int i=0;i<listeFinale.size();i++) {
 			result += "R_id = " + listeFinale.get(i) + " or ";
@@ -320,7 +503,7 @@ public class Page2_controller implements Initializable {
 		//System.out.println(result);
 		result = result.substring(0,(result.length()-3));
 				
-		List<String> datas = manager.selectRequestStrings("SELECT Ingredients, ceil((sum(Qtt)/4)*" + DataShare.instance().getPersonne() + ") as total, Unites from temp_B where " + result + "group by Ingredients");
+		datas = manager.selectRequestStrings("SELECT Ingredients, ceil((sum(Qtt)/4)*" + DataShare.instance().getPersonne() + ") as total, Unites from temp_B where " + result + "group by Ingredients");
 		
 		for(int i=0;i<datas.size();i++) {
 			System.out.print(datas.get(i) + " ");
@@ -346,16 +529,46 @@ public class Page2_controller implements Initializable {
 			stage.show();
 			
 			for(int i=0;i<(datas.size()/3);i++) {
-				controller.getVBox1().getChildren().add(new Text(datas.get(i*3)));
-				controller.getVBox2().getChildren().add(new Text(datas.get(((i*3)+1))));
-				controller.getVBox3().getChildren().add(new Text(datas.get(((i*3)+2))));
-
+				controller.getPane1().getChildren().add(new Text(datas.get(i*3)));
+				controller.getPane2().getChildren().add(new Text(datas.get(((i*3)+1))));
+				controller.getPane3().getChildren().add(new Text(datas.get(((i*3)+2))));
+				
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+}
+			
+//			for(int i=0;i<(datas.size()/3);i++) {
+//				//controller.getPane1().getChildren().add(new Text(datas.get(i*3)));
+//				VBox vbox = new VBox();
+//				
+//				Text text = new Text(datas.get(i*3));
+//				
+//				vbox.getChildren().add(text);
+//				
+//				controller.getPane1().getChildren().add(vbox);
+//				controller.getPane1().setPadding(new Insets(5,0,0,0));
+////				controller.getPane2().getChildren().add(new Text(datas.get(((i*3)+1))));
+////				controller.getPane3().getChildren().add(new Text(datas.get(((i*3)+2))));
+
 		}
-		
-		
+	
+	public void addFavori() {
+		if(paneUser.getOpacity()==1.0) {
+			
+		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
