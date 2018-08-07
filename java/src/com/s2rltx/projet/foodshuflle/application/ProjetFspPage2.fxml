@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -9,29 +10,21 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.shape.Rectangle?>
 
-<BorderPane maxHeight="600.0" maxWidth="800.0"
-	minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
-	prefWidth="800.0" style="-fx-background-color: #FFE6C9;"
-	xmlns="http://javafx.com/javafx/10.0.1"
-	xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Page2_controller">
+<BorderPane maxHeight="600.0" maxWidth="800.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #FFE6C9;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.s2rltx.projet.foodshuflle.application.controller.Page2_controller">
 	<top>
-		<BorderPane prefHeight="200.0" prefWidth="200.0"
-			BorderPane.alignment="CENTER">
+		<BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
 			<left>
-				<ImageView fitHeight="185.0" fitWidth="249.0"
-					pickOnBounds="true" preserveRatio="true"
-					BorderPane.alignment="CENTER">
+				<ImageView fitHeight="185.0" fitWidth="249.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
 					<image>
-						<Image
-							url="@../../../../Desktop/IMIE/Projet%20POEC/LogoFoodShuffle.jpg" />
+						<Image url="@../../../../../../image/LogoFoodShuffle.jpg" />
 					</image>
 					<BorderPane.margin>
 						<Insets left="10.0" />
@@ -39,165 +32,171 @@
 				</ImageView>
 			</left>
 			<center>
-				<BorderPane prefHeight="200.0" prefWidth="200.0"
-					BorderPane.alignment="CENTER">
+				<BorderPane prefHeight="188.0" prefWidth="541.0" BorderPane.alignment="CENTER">
 					<center>
-						<TextField alignment="CENTER" prefHeight="48.0"
-							prefWidth="545.0" style="-fx-background-color: #FFE6C9;"
-							text="FOOD SHUFFLE" BorderPane.alignment="CENTER">
-							<font>
-								<Font name="AR DELANEY" size="60.0" />
-							</font>
-							<padding>
-								<Insets bottom="-20.0" />
-							</padding>
-							<BorderPane.margin>
-								<Insets bottom="-30.0" />
-							</BorderPane.margin>
-						</TextField>
+						<Pane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="90.0" prefWidth="541.0" BorderPane.alignment="CENTER">
+							<children>
+								<Text layoutX="33.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FOOD SHUFFLE" wrappingWidth="428.1600036621094">
+									<font>
+										<Font name="AR DELANEY" size="60.0" />
+									</font>
+								</Text>
+								<Text layoutX="125.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Créer vos repas en quelques clics" textAlignment="CENTER">
+									<font>
+										<Font name="System Bold Italic" size="16.0" />
+									</font>
+								</Text>
+							</children>
+						</Pane>
 					</center>
-					<bottom>
-						<TextField alignment="TOP_CENTER"
-							style="-fx-background-color: #FFE6C9;"
-							text="Créer vos repas en quelques clics"
-							BorderPane.alignment="CENTER">
-							<BorderPane.margin>
-								<Insets bottom="30.0" />
-							</BorderPane.margin>
-							<font>
-								<Font name="System Bold Italic" size="16.0" />
-							</font>
-						</TextField>
-					</bottom>
 				</BorderPane>
 			</center>
 		</BorderPane>
 	</top>
-	<left>
-		<Pane prefHeight="440.0" prefWidth="201.0"
-			BorderPane.alignment="CENTER">
-			<BorderPane.margin>
-				<Insets left="7.0" />
-			</BorderPane.margin>
-			<children>
-				<TextField fx:id="login" layoutX="26.0" layoutY="51.0" />
-				<PasswordField fx:id="password" layoutX="26.0" layoutY="114.0" />
-				<Text layoutX="26.0" layoutY="47.0" strokeType="OUTSIDE"
-					strokeWidth="0.0" text="LOGIN :" />
-				<Text layoutX="26.0" layoutY="110.0" strokeType="OUTSIDE"
-					strokeWidth="0.0" text="PASSWORD :" />
-				<Text layoutX="45.0" layoutY="208.0" strokeType="OUTSIDE"
-					strokeWidth="0.0" text="S'INSCRIRE :">
-					<font>
-						<Font size="10.0" />
-					</font>
-				</Text>
-				<ImageView fx:id="register" fitHeight="27.0" fitWidth="24.0"
-					layoutX="115.0" layoutY="189.0" pickOnBounds="true"
-					preserveRatio="true" onMouseClicked="#registerClicked">
-					<image>
-						<Image
-							url="@../../../../Desktop/IMIE/Projet%20POEC/register.png" />
-					</image>
-				</ImageView>
-				<Text layoutX="59.0" layoutY="253.0" strokeType="OUTSIDE"
-					strokeWidth="0.0" text="VOS FAVORIS">
-					<font>
-						<Font name="System Bold" size="12.0" />
-					</font>
-				</Text>
-				<Button fx:id="loginButton" layoutX="123.0" layoutY="148.0"
-					mnemonicParsing="false" text="GO !" />
-			</children>
-		</Pane>
-	</left>
-	<center>
+   <center>
 
-		<VBox prefHeight="200.0" prefWidth="100.0"
-			BorderPane.alignment="CENTER">
+      		<VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
 			<children>
 				<GridPane hgap="30.0" vgap="100.0">
 					<columnConstraints>
-						<ColumnConstraints hgrow="SOMETIMES"
-							minWidth="10.0" prefWidth="100.0" />
-						<ColumnConstraints hgrow="SOMETIMES"
-							minWidth="10.0" prefWidth="100.0" />
-						<ColumnConstraints hgrow="SOMETIMES"
-							minWidth="10.0" prefWidth="100.0" />
-						<ColumnConstraints hgrow="SOMETIMES"
-							minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
 					</columnConstraints>
 					<rowConstraints>
-						<RowConstraints minHeight="10.0" prefHeight="30.0"
-							vgrow="SOMETIMES" />
-						<RowConstraints minHeight="10.0" prefHeight="30.0"
-							vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 					</rowConstraints>
 					<children>
-						<ImageView fitHeight="103.0" fitWidth="127.0"
-							pickOnBounds="true" preserveRatio="true" />
-						<ImageView fitHeight="103.0" fitWidth="127.0"
-							pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
-						<ImageView fitHeight="103.0" fitWidth="127.0"
-							pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1"
-							GridPane.rowIndex="1" />
-						<ImageView fitHeight="103.0" fitWidth="127.0"
-							pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
-						<ImageView fitHeight="103.0" fitWidth="127.0"
-							pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
-						<ImageView fitHeight="103.0" fitWidth="127.0"
-							pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" />
-						<ImageView fitHeight="103.0" fitWidth="127.0"
-							pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2"
-							GridPane.rowIndex="1" />
-						<ImageView fitHeight="103.0" fitWidth="127.0"
-							pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3"
-							GridPane.rowIndex="1" />
+						<ImageView fx:id="image1" fitHeight="103.0" fitWidth="127.0" onMouseClicked="#addFavoriImg1" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" />
+						<ImageView fx:id="image5" fitHeight="103.0" fitWidth="127.0" onMouseClicked="#addFavoriImg5" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" GridPane.rowIndex="1" />
+						<ImageView fx:id="image6" fitHeight="103.0" fitWidth="127.0" onMouseClicked="#addFavoriImg6" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+						<ImageView fx:id="image2" fitHeight="103.0" fitWidth="127.0" onMouseClicked="#addFavoriImg2" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" GridPane.columnIndex="1" />
+						<ImageView fx:id="image3" fitHeight="103.0" fitWidth="127.0" onMouseClicked="#addFavoriImg3" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" GridPane.columnIndex="2" />
+						<ImageView fx:id="image4" fitHeight="103.0" fitWidth="127.0" onMouseClicked="#addFavoriImg4" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" GridPane.columnIndex="3" />
+						<ImageView fx:id="image7" fitHeight="103.0" fitWidth="127.0" onMouseClicked="#addFavoriImg7" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+						<ImageView fx:id="image8" fitHeight="103.0" fitWidth="127.0" onMouseClicked="#addFavoriImg8" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <Label fx:id="label1" alignment="CENTER" contentDisplay="CENTER" opacity="0.0" GridPane.halignment="CENTER">
+                     <GridPane.margin>
+                        <Insets top="120.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="label5" opacity="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets top="120.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="label2" opacity="0.0" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                     <GridPane.margin>
+                        <Insets top="120.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="label6" opacity="0.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets top="120.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="label3" opacity="0.0" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                     <GridPane.margin>
+                        <Insets top="120.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="label7" opacity="0.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets top="120.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="label4" opacity="0.0" GridPane.columnIndex="3" GridPane.halignment="CENTER">
+                     <GridPane.margin>
+                        <Insets top="120.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="label8" opacity="0.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets top="120.0" />
+                     </GridPane.margin>
+                  </Label>
 					</children>
 					<VBox.margin>
 						<Insets top="60.0" />
 					</VBox.margin>
 				</GridPane>
 
-				<HBox alignment="CENTER">
-					<Text strokeType="OUTSIDE" strokeWidth="0.0"
-						text="Générer  à nouveau">
+      				<HBox alignment="CENTER" visible="false">
+					<Text strokeType="OUTSIDE" strokeWidth="0.0" text="Générer  à nouveau">
 						<font>
 							<Font name="System Bold" size="22.0" />
 						</font>
 					</Text>
-					<Rectangle width="40.0" >
+					<Rectangle width="40.0">
 					</Rectangle>
-					<ImageView fx:id="generate" fitHeight="44.0" fitWidth="121.0"
-						layoutX="64.0" layoutY="11.0" pickOnBounds="true"
-						preserveRatio="true">
+					<ImageView fx:id="generate" fitHeight="44.0" fitWidth="121.0" layoutX="64.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
 						<image>
-							<Image
-								url="@../../../../Desktop/IMIE/Projet%20POEC/couvert.png" />
+							<Image url="@../../../../../../image/couvert.png" />
 						</image>
 					</ImageView>
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
 				</HBox>
 				
-				<HBox alignment="CENTER">
-					<Text strokeType="OUTSIDE" strokeWidth="0.0"
-						text="Établir la liste de course">
+      				<HBox alignment="CENTER">
+					<Text strokeType="OUTSIDE" strokeWidth="0.0" text="Établir la liste de course">
 						<font>
 							<Font name="System Bold" size="22.0" />
 						</font>
 					</Text>
-					<Rectangle width="40.0" >
+					<Rectangle width="40.0">
 					</Rectangle>
-					<ImageView fx:id="list" fitHeight="44.0" fitWidth="121.0"
-						layoutX="64.0" layoutY="11.0" pickOnBounds="true"
-						preserveRatio="true">
+					<ImageView fx:id="list" fitHeight="44.0" fitWidth="121.0" layoutX="64.0" layoutY="11.0" onMouseClicked="#listeCourse" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
 						<image>
-							<Image
-								url="@../../../../Desktop/IMIE/Projet%20POEC/shopping%20list.png" />
+							<Image url="@../../../../../../image/shopping%20list.png" />
 						</image>
 					</ImageView>
 				</HBox>
+            <Button alignment="CENTER" mnemonicParsing="false" onMouseClicked="#goMain" text="Retour accueil">
+               <VBox.margin>
+                  <Insets left="500.0" top="10.0" />
+               </VBox.margin>
+            </Button>
 			</children>
 		</VBox>
-
-	</center>
+   </center>
+   <left>
+      <VBox prefHeight="400.0" prefWidth="201.0" BorderPane.alignment="CENTER">
+         <children>
+      		<Pane fx:id="paneLogin" prefHeight="440.0" prefWidth="201.0">
+      			<children>
+      				<TextField fx:id="login" layoutX="26.0" layoutY="51.0" />
+      				<PasswordField fx:id="password" layoutX="26.0" layoutY="114.0" />
+      				<Text layoutX="26.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LOGIN :" />
+      				<Text layoutX="26.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PASSWORD :" />
+      				<Text layoutX="45.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="S'INSCRIRE :">
+      					<font>
+      						<Font size="10.0" />
+      					</font>
+      				</Text>
+      				<Button fx:id="loginButton" layoutX="123.0" layoutY="148.0" mnemonicParsing="false" onMouseClicked="#testLogin" style="-fx-cursor: hand;" text="GO !" />
+      				<ImageView fx:id="register" fitHeight="27.0" fitWidth="24.0" layoutX="115.0" layoutY="189.0" onMouseClicked="#registerClicked" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+      					<image>
+      						<Image url="@../../../../../../image/register.png" />
+      					</image>
+      				</ImageView>
+      			</children>
+      		</Pane>
+              <Pane fx:id="paneUser" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Text layoutX="57.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" VOS FAVORIS">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="logOut" layoutX="67.5" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#logOut" style="-fx-cursor: hand;" text="LOG OUT" />
+                  <VBox fx:id="vboxFavori" alignment="TOP_RIGHT" layoutY="50.0" prefHeight="138.0" prefWidth="201.0" />
+               </children>
+            </Pane>
+         </children>
+      </VBox>
+</left>
 </BorderPane>

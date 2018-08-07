@@ -45,18 +45,5 @@ public class NomDePlat extends DBBaseItem{
 		return result;
 	}
 
-	public DBBaseItem parseIn(ResultSet rs) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public String parseOut(Object item) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
-
-	
 	
 }

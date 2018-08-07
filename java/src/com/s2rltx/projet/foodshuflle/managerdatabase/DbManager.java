@@ -99,8 +99,11 @@ public List<String> selectRequestStrings(String request) {
 			e.printStackTrace();
 		}
 	}
-
+//	for(int i =0;i<result.size();i++) {
+//		System.out.print(result.get(i));
+//	}
 	return result;
+	
 }
 
 public void selectReq(String request) {
@@ -176,7 +179,8 @@ public void selectReq(String request) {
 
 	      e.printStackTrace();
 
-	    }      
+	    }
+	     
 
 }
 }
