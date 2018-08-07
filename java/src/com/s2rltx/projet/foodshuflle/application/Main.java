@@ -1,17 +1,9 @@
 package com.s2rltx.projet.foodshuflle.application;
 	
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
-
-import com.s2rltx.projet.foodshuflle.managerdatabase.DbManager;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 
